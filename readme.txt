@@ -9,7 +9,7 @@ Stable tag: 0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds the output of the Multisite Language Switcher to the one or more of your nav-menus
+Adds the output of the Multisite Language Switcher to the one (or more) of your navigation menu(s)
 
 == Description ==
 
