@@ -1,5 +1,6 @@
 filter:
-    excluded_paths: [languages/*]
+    excluded_paths:
+        - languages/*
 
 tools:
     php_mess_detector: true
