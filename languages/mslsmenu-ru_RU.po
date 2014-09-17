@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MslsMenu 0.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/multisite-language-switcher\n"
+"POT-Creation-Date: 2014-09-17 14:54+0100\n"
+"PO-Revision-Date: 2014-09-17 14:55+0100\n"
+"Last-Translator: \n"
+"Language-Team: andreyv <jujav4ik@gmail.com>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+# @ msls
+#: ../MslsMenu.php:74
+msgid "Menu Settings"
+msgstr ""
+
+#: ../MslsMenu.php:78
+msgid "Theme Location"
+msgstr ""
+
+# @ msls
+#: ../MslsMenu.php:79
+msgid "Display"
+msgstr "Показать"
+
+# @ msls
+#: ../MslsMenu.php:80
+msgid "Text/HTML before the list"
+msgstr "Текст/HTML перед элементом списка"
+
+# @ msls
+#: ../MslsMenu.php:81
+msgid "Text/HTML after the list"
+msgstr "Текст/HTML после элемента списка"
+
+# @ msls
+#: ../MslsMenu.php:82
+msgid "Text/HTML before each item"
+msgstr "Текст/HTML перед элементом"
+
+# @ msls
+#: ../MslsMenu.php:83
+msgid "Text/HTML after each item"
+msgstr "Текст/HTML после элемента"
+
+# @ msls
+#~ msgid "This post is also available in %s."
+#~ msgstr "Эта статья также доступна на %s"
+
+# @ msls
+#~ msgid "%s and %s"
+#~ msgstr "%s и %s"
+
+# @ msls
+#~ msgid "Multisite Language Switcher Options"
+#~ msgstr "Multisite Language Switcher Настройки"
+
+# @ msls
+#~ msgid "Update"
+#~ msgstr "Обновить"
+
+# @ msls
+#, fuzzy
+#~ msgid "Language Settings"
+#~ msgstr "Главные настройки"
