@@ -5,7 +5,7 @@ Donate link: http://www.greenpeace.org/international/
 Tags: multilingual, multisite, language, switcher, international, localization, i18n, menu, nav_menu
 Requires at least: 3.6.1
 Tested up to: 4.1
-Stable tag: 0.2
+Stable tag: 0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,9 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 4. Output in the primary nav menu
 
 == Changelog ==
+
+= 0.3 =
+* Class MslsMenu
 
 = 0.2 =
 * configuration in the MSLS options added
