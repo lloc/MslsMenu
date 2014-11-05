@@ -4,7 +4,7 @@
 Plugin Name: MslsMenu
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 0.3
+Version: 0.3.1
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 */
@@ -33,11 +33,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 class MslsMenu {
 
 	public function __construct() {
-		if ( function_exists( 'the_msls' ) ) {
-			add_action( 'init',                array( $this, 'plugin_init' ) );
-			add_filter( 'wp_nav_menu_items',   array( $this, 'nav_item' ), 10, 2 );
-			add_action( 'msls_admin_register', array( $this, 'admin_register' ) );
-		}
+		add_action( 'init',                array( $this, 'plugin_init' ) );
+		add_filter( 'wp_nav_menu_items',   array( $this, 'nav_item' ), 10, 2 );
+		add_action( 'msls_admin_register', array( $this, 'admin_register' ) );
 	}
 
 	/**
@@ -60,17 +58,19 @@ class MslsMenu {
 	 * @return string
 	 */
 	function nav_item( $items, $args ) {
-		$options = MslsOptions::instance();
+		if ( function_exists( 'the_msls' ) ) {
+			$options = MslsOptions::instance();
 
-		if ( $options->mslsmenu_theme_location == $args->theme_location ) {
-			$mslsmenu = '';
+			if ( $options->mslsmenu_theme_location == $args->theme_location ) {
+				$mslsmenu = '';
 
-			$obj = new MslsOutput;
-			foreach ( $obj->get( (int) $options->mslsmenu_display ) as $item ) {
-				$mslsmenu .= $options->mslsmenu_before_item . $item . $options->mslsmenu_after_item;
+				$obj = new MslsOutput;
+				foreach ( $obj->get( (int) $options->mslsmenu_display ) as $item ) {
+					$mslsmenu .= $options->mslsmenu_before_item . $item . $options->mslsmenu_after_item;
+				}
+
+				$items .= $options->mslsmenu_before_output . $mslsmenu . $options->mslsmenu_after_output;
 			}
-
-			$items .= $options->mslsmenu_before_output . $mslsmenu . $options->mslsmenu_after_output;
 		}
 		return $items;
 	}
