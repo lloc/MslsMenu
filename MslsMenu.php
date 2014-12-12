@@ -90,8 +90,7 @@ class MslsMenu {
 
 		$args = array( 'msls_admin' => new MslsAdmin() );
 
-		add_settings_field(
-			'mslsmenu_theme_location',
+		add_settings_field(	'mslsmenu_theme_location',
 			__( 'Theme Location', 'mslsmenu' ),
 			array( $this, 'theme_location' ),
 			$page,
