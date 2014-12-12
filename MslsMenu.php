@@ -4,13 +4,13 @@
 Plugin Name: MslsMenu
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 0.3.1
+Version: 1.0
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 */
 
 /*
- Copyright 2013  Dennis Ploetner  (email : re@lloc.de)
+Copyright 2014  Dennis Ploetner  (email : re@lloc.de)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -33,8 +33,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 class MslsMenu {
 
 	public function __construct() {
-		add_action( 'init',                array( $this, 'plugin_init' ) );
-		add_filter( 'wp_nav_menu_items',   array( $this, 'nav_item' ), 10, 2 );
+		add_action( 'init', array( $this, 'plugin_init' ) );
+		add_filter( 'wp_nav_menu_items', array( $this, 'nav_item' ), 10, 2 );
 		add_action( 'msls_admin_register', array( $this, 'admin_register' ) );
 	}
 
@@ -53,8 +53,10 @@ class MslsMenu {
 	/**
 	 * Callback for wp_nav_menu_items
 	 * @package mslsmenu
+	 *
 	 * @param string $items
-	 * @param array $args
+	 * @param StdClass $args
+	 *
 	 * @return string
 	 */
 	function nav_item( $items, $args ) {
@@ -72,6 +74,7 @@ class MslsMenu {
 				$items .= $options->mslsmenu_before_output . $mslsmenu . $options->mslsmenu_after_output;
 			}
 		}
+
 		return $items;
 	}
 
@@ -79,6 +82,7 @@ class MslsMenu {
 	/**
 	 * Callback for msls_admin_register
 	 * @package mslsmenu
+	 *
 	 * @param string $page
 	 */
 	function admin_register( $page ) {
@@ -126,6 +130,7 @@ class MslsMenu {
 	/**
 	 * Callback for mslsmenu_theme_location
 	 * @package mslsmenu
+	 *
 	 * @param array $args
 	 */
 	function theme_location( $args ) {
@@ -144,6 +149,7 @@ class MslsMenu {
 	/**
 	 * Callback for mslsmenu_display
 	 * @package mslsmenu
+	 *
 	 * @param array $args
 	 */
 	function display( $args ) {
@@ -157,6 +163,7 @@ class MslsMenu {
 	/**
 	 * Callback for mslsmenu text-inputs
 	 * @package mslsmenu
+	 *
 	 * @param array $args
 	 */
 	function input( $args ) {
@@ -164,4 +171,5 @@ class MslsMenu {
 	}
 
 }
-$mslsmenu = new MslsMenu(); 
+
+$mslsmenu = new MslsMenu();
