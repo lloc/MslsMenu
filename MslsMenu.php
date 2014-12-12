@@ -90,25 +90,22 @@ class MslsMenu {
 
 		$args = array( 'msls_admin' => new MslsAdmin() );
 
-		add_settings_field( 'mslsmenu_theme_location', __( 'Theme Location', 'mslsmenu' ), array(
-				$this,
-				'theme_location'
-			), $page, 'mslsmenu_section', $args );
-		add_settings_field( 'mslsmenu_display', __( 'Display', 'mslsmenu' ), array(
-				$this,
-				'display'
-			), $page, 'mslsmenu_section', $args );
+		$callback = array( $this, 'theme_location' );
+		add_settings_field( 'mslsmenu_theme_location', __( 'Theme Location', 'mslsmenu' ), $callback, $page, 'mslsmenu_section', $args );
 
-		$fields = array(
-			'mslsmenu_before_output' => __( 'Text/HTML before the list',  'mslsmenu' ),
-			'mslsmenu_after_output'  => __( 'Text/HTML after the list',   'mslsmenu' ),
+		$callback = array( $this, 'display' );
+		add_settings_field( 'mslsmenu_display', __( 'Display', 'mslsmenu' ), $callback, $page, 'mslsmenu_section', $args );
+
+		$callback = array( $this, 'input' );
+		$fields   = array(
+			'mslsmenu_before_output' => __( 'Text/HTML before the list', 'mslsmenu' ),
+			'mslsmenu_after_output'  => __( 'Text/HTML after the list', 'mslsmenu' ),
 			'mslsmenu_before_item'   => __( 'Text/HTML before each item', 'mslsmenu' ),
-			'mslsmenu_after_item'    => __( 'Text/HTML after each item',  'mslsmenu' ),
+			'mslsmenu_after_item'    => __( 'Text/HTML after each item', 'mslsmenu' ),
 		);
-
 		foreach ( $fields as $id => $label ) {
 			$args['mslsmenu_input'] = $id;
-			add_settings_field( $id, $label, array( $this, 'input' ), $page, 'mslsmenu_section', $args );
+			add_settings_field( $id, $label, $callback, $page, 'mslsmenu_section', $args );
 		}
 	}
 
