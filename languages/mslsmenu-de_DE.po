@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: MslsMenu 0.2\n"
+"Project-Id-Version: MslsMenu 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/multisite-language-switcher\n"
-"POT-Creation-Date: 2014-09-17 14:51+0100\n"
-"PO-Revision-Date: 2014-09-17 14:54+0100\n"
+"POT-Creation-Date: 2014-12-12 10:58+0100\n"
+"PO-Revision-Date: 2014-12-12 10:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: Dennis Ploetner <re@lloc.de>\n"
 "Language: German (de_DE)\n"
@@ -21,35 +21,35 @@ msgstr ""
 "X-Poedit-SearchPath-1: ..\n"
 
 # @ msls
-#: ../MslsMenu.php:74
+#: ../MslsMenu.php:89
 msgid "Menu Settings"
 msgstr "Menü-Einstellungen"
 
-#: ../MslsMenu.php:78
+#: ../MslsMenu.php:95
 msgid "Theme Location"
 msgstr ""
 
 # @ msls
-#: ../MslsMenu.php:79
+#: ../MslsMenu.php:103
 msgid "Display"
 msgstr "Anzeige"
 
 # @ msls
-#: ../MslsMenu.php:80
+#: ../MslsMenu.php:111
 msgid "Text/HTML before the list"
 msgstr "Text/HTML vor der Liste"
 
 # @ msls
-#: ../MslsMenu.php:81
+#: ../MslsMenu.php:112
 msgid "Text/HTML after the list"
 msgstr "Text/HTML nach der Liste"
 
 # @ msls
-#: ../MslsMenu.php:82
+#: ../MslsMenu.php:113
 msgid "Text/HTML before each item"
 msgstr "Text/HTML vor jedem Element"
 
 # @ msls
-#: ../MslsMenu.php:83
+#: ../MslsMenu.php:114
 msgid "Text/HTML after each item"
 msgstr "Text/HTML nach jedem Element"

@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: MslsMenu 0.2\n"
+"Project-Id-Version: MslsMenu 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/multisite-language-"
 "switcher\n"
-"POT-Creation-Date: 2014-09-17 14:33+0100\n"
-"PO-Revision-Date: 2014-09-17 14:34+0100\n"
+"POT-Creation-Date: 2014-12-12 11:00+0100\n"
+"PO-Revision-Date: 2014-12-12 11:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: realloc's asylum <re@lloc.de>\n"
 "MIME-Version: 1.0\n"
@@ -21,30 +21,30 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../MslsMenu.php:74
+#: ../MslsMenu.php:89
 msgid "Menu Settings"
 msgstr ""
 
-#: ../MslsMenu.php:78
+#: ../MslsMenu.php:95
 msgid "Theme Location"
 msgstr ""
 
-#: ../MslsMenu.php:79
+#: ../MslsMenu.php:103
 msgid "Display"
 msgstr ""
 
-#: ../MslsMenu.php:80
+#: ../MslsMenu.php:111
 msgid "Text/HTML before the list"
 msgstr ""
 
-#: ../MslsMenu.php:81
+#: ../MslsMenu.php:112
 msgid "Text/HTML after the list"
 msgstr ""
 
-#: ../MslsMenu.php:82
+#: ../MslsMenu.php:113
 msgid "Text/HTML before each item"
 msgstr ""
 
-#: ../MslsMenu.php:83
+#: ../MslsMenu.php:114
 msgid "Text/HTML after each item"
 msgstr ""
