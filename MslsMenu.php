@@ -4,7 +4,7 @@
 Plugin Name: MslsMenu
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 1.0
+Version: 1.1
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 */
@@ -61,9 +61,10 @@ class MslsMenu {
 	 */
 	function nav_item( $items, $args ) {
 		if ( function_exists( 'the_msls' ) ) {
-			$options = MslsOptions::instance();
+			$options   = MslsOptions::instance();
+			$locations = (array) $options->mslsmenu_theme_location;
 
-			if ( $options->mslsmenu_theme_location == $args->theme_location ) {
+			if ( in_array( $args->theme_location, $locations ) ) {
 				$mslsmenu = '';
 
 				$obj = new MslsOutput;
@@ -116,15 +117,26 @@ class MslsMenu {
 	 * @param array $args
 	 */
 	function theme_location( $args ) {
-		$locations = array( 0 => '' );
+		$locations = array();
 		foreach ( get_nav_menu_locations() as $key => $value ) {
 			$locations[ $key ] = $key;
 		}
 
-		echo $args['msls_admin']->render_select(
+		$options  = array();
+		$selected = (array) MslsOptions::instance()->mslsmenu_theme_location;
+		foreach ( $locations as $value => $description ) {
+			$options[] = sprintf(
+				'<option value="%s" %s>%s</option>',
+				$value,
+				selected( true, ( in_array( $value, $selected ) ), false ),
+				$description
+			);
+		}
+
+		printf(
+			'<select id="%1$s" name="msls[%1$s]" multiple="multiple">%2$s</select>',
 			'mslsmenu_theme_location',
-			$locations,
-			MslsOptions::instance()->mslsmenu_theme_location
+			implode( '', $options )
 		); // xss ok
 	}
 
