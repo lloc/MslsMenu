@@ -21,8 +21,9 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 
 * Download the plugin and uncompress it with your preferred unzip programme
 * Copy the entire directory in your plugin directory of your WordPress blog (/wp-content/plugins)
+* Activate the plugin
 * You will find the configuration of the plugin once in each blog in Settings -> Multisite Language Switcher
-* Please, check the Screenshots-section too!
+* Set the the menu specific options such as `<li class="mslsl-menu">` before the item-ouitput or the description. Please, check the Screenshots-section too!
 
 == Screenshots ==
 
