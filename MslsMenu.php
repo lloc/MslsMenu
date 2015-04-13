@@ -124,6 +124,7 @@ class MslsMenu {
 
 		$options  = array();
 		$selected = (array) MslsOptions::instance()->mslsmenu_theme_location;
+		error_log( print_r( $selected, true ) );
 		foreach ( $locations as $value => $description ) {
 			$options[] = sprintf(
 				'<option value="%s" %s>%s</option>',
@@ -134,7 +135,7 @@ class MslsMenu {
 		}
 
 		printf(
-			'<select id="%1$s" name="msls[%1$s]" multiple="multiple">%2$s</select>',
+			'<select id="%1$s" name="msls[%1$s][]" multiple="multiple">%2$s</select>',
 			'mslsmenu_theme_location',
 			implode( '', $options )
 		); // xss ok
