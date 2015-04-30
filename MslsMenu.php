@@ -122,9 +122,15 @@ class MslsMenu {
 			$locations[ $key ] = $key;
 		}
 
-		$options  = array();
 		$selected = (array) MslsOptions::instance()->mslsmenu_theme_location;
 
+		$options  = array(
+			sprintf(
+				'<option value="" %s>%s</option>',
+				selected( true, ( in_array( '', $selected ) ), false ),
+				__( '-- empty --', 'mslsmenu' )
+			)
+		);
 		foreach ( $locations as $value => $description ) {
 			$options[] = sprintf(
 				'<option value="%s" %s>%s</option>',
