@@ -4,7 +4,7 @@
 Plugin Name: MslsMenu
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 1.1
+Version: 1.2
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 */
