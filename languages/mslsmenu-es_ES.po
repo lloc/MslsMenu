@@ -4,9 +4,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MslsMenu 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/multisite-language-switcher\n"
-"POT-Creation-Date: 2014-12-12 10:59+0100\n"
-"PO-Revision-Date: 2014-12-12 10:59+0100\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2015-05-04 17:07+0100\n"
+"PO-Revision-Date: 2015-05-04 17:07+0100\n"
+"Last-Translator: Dennis Ploetner <dennis.ploetner@drivek.it>\n"
 "Language-Team: Andreas Breitschopp <a-breitschopp@ab-tools.com>\n"
 "Language: Spanish (es_ES)\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../MslsMenu.php:89
+#: ../MslsMenu.php:90
 msgid "Menu Settings"
 msgstr ""
 
@@ -30,25 +30,29 @@ msgstr ""
 msgid "Theme Location"
 msgstr ""
 
-#: ../MslsMenu.php:103
+#: ../MslsMenu.php:98
 msgid "Display"
 msgstr "Aspecto"
 
-#: ../MslsMenu.php:111
+#: ../MslsMenu.php:102
 msgid "Text/HTML before the list"
 msgstr "Texto/HTML antes de la lista"
 
-#: ../MslsMenu.php:112
+#: ../MslsMenu.php:103
 msgid "Text/HTML after the list"
 msgstr "Texto/HTML después de la lista"
 
-#: ../MslsMenu.php:113
+#: ../MslsMenu.php:104
 msgid "Text/HTML before each item"
 msgstr "Texto/HTML antes de cada ítem"
 
-#: ../MslsMenu.php:114
+#: ../MslsMenu.php:105
 msgid "Text/HTML after each item"
 msgstr "Texto/HTML después de cada ítem"
+
+#: ../MslsMenu.php:131
+msgid "-- empty --"
+msgstr ""
 
 #~ msgid "This post is also available in %s."
 #~ msgstr "Esta entrada está también disponible en %s."
