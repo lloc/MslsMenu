@@ -5,7 +5,7 @@ Donate link: http://www.greenpeace.org/international/
 Tags: multilingual, multisite, language, switcher, international, localization, i18n, menu, nav_menu
 Requires at least: 3.6.1
 Tested up to: 4.2
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,9 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 
 == Changelog ==
 
+= 1.3.1 =
+* fix for [fatal eror on activation](https://wordpress.org/support/topic/fatal-error-warning-cannot-be-activated)
+ 
 = 1.3 =
 * defensive loading, factory added and chore
 
