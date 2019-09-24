@@ -72,7 +72,7 @@ class MslsMenu {
 			$mslsmenu = '';
 
 			$obj = lloc\Msls\MslsOutput::init();
-			foreach ( $obj->get( (int) $options->mslsmenu_display ) as $item ) {
+			foreach ( $obj->get( (int) $options->mslsmenu_display, false, (int) $options->only_with_translation ) as $item ) {
 				$mslsmenu .= $options->mslsmenu_before_item . $item . $options->mslsmenu_after_item;
 			}
 
