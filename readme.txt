@@ -4,8 +4,8 @@ Contributors: realloc
 Donate link: http://www.greenpeace.org/international/
 Tags: multilingual, multisite, language, switcher, international, localization, i18n, menu, nav_menu
 Requires at least: 3.6.1
-Tested up to: 4.6
-Stable tag: 1.4
+Tested up to: 5.2
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,12 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 
 == Changelog ==
 
+= 2.1 =
+* reflect settings of MSLS
+
+= 2.0 =
+* compatibility con MSLS 2.0
+
 = 1.4 =
 * plugin inits when plugins_loaded runs and adds callback to hooks in its factory now
 
@@ -53,15 +59,3 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 * marked as stable
 * WordPress Coding Standards
 * PHPDocs
-
-= 0.3.1 =
-* check for 'the_msls' was too early
-
-= 0.3 =
-* Class MslsMenu
-
-= 0.2 =
-* configuration in the MSLS options added
-
-= 0.1 =
-* first version

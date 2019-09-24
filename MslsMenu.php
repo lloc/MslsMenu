@@ -4,7 +4,7 @@
 Plugin Name: MslsMenu
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 1.4
+Version: 2.1
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 Text Domain: mslsmenu
@@ -48,8 +48,10 @@ class MslsMenu {
 	public static function init() {
 		$obj = new self;
 
-		add_filter( 'wp_nav_menu_items', array( $obj, 'nav_item' ), 10, 2 );
-		add_action( 'msls_admin_register', array( $obj, 'admin_register' ) );
+		if ( class_exists( lloc\Msls\MslsOptions::class ) ) {
+			add_filter( 'wp_nav_menu_items', array( $obj, 'nav_item' ), 10, 2 );
+			add_action( 'msls_admin_register', array( $obj, 'admin_register' ) );
+		}
 
 		return $obj;
 	}
@@ -63,20 +65,18 @@ class MslsMenu {
 	 * @return string
 	 */
 	function nav_item( $items, $args ) {
-		if ( function_exists( 'the_msls' ) ) {
-			$options   = MslsOptions::instance();
-			$locations = (array) $options->mslsmenu_theme_location;
+		$options   = lloc\Msls\MslsOptions::instance();
+		$locations = (array) $options->mslsmenu_theme_location;
 
-			if ( in_array( $args->theme_location, $locations ) ) {
-				$mslsmenu = '';
+		if ( in_array( $args->theme_location, $locations ) ) {
+			$mslsmenu = '';
 
-				$obj = new MslsOutput;
-				foreach ( $obj->get( (int) $options->mslsmenu_display, false, (int) $options->only_with_translation ) as $item ) {
-					$mslsmenu .= $options->mslsmenu_before_item . $item . $options->mslsmenu_after_item;
-				}
-
-				$items .= $options->mslsmenu_before_output . $mslsmenu . $options->mslsmenu_after_output;
+			$obj = lloc\Msls\MslsOutput::init();
+			foreach ( $obj->get( (int) $options->mslsmenu_display ) as $item ) {
+				$mslsmenu .= $options->mslsmenu_before_item . $item . $options->mslsmenu_after_item;
 			}
+
+			$items .= $options->mslsmenu_before_output . $mslsmenu . $options->mslsmenu_after_output;
 		}
 
 		return $items;
@@ -92,23 +92,23 @@ class MslsMenu {
 		$label = __( 'Menu Settings', 'mslsmenu' );
 		add_settings_section( $sid, $label, null, $page );
 
-		$args = array( 'msls_admin' => new MslsAdmin() );
+		$args = [ 'msls_admin' => lloc\Msls\MslsAdmin::init() ];
 
 		$label    = __( 'Theme Location', 'mslsmenu' );
-		$callback = array( $this, 'theme_location' );
+		$callback = [ $this, 'theme_location' ];
 		add_settings_field( 'mslsmenu_theme_location', $label, $callback, $page, $sid, $args );
 
 		$label    = __( 'Display', 'mslsmenu' );
-		$callback = array( $this, 'display' );
+		$callback = [ $this, 'display' ];
 		add_settings_field( 'mslsmenu_display', $label, $callback, $page, $sid, $args );
 
-		$fields   = array(
+		$fields   = [
 			'mslsmenu_before_output' => __( 'Text/HTML before the list', 'mslsmenu' ),
 			'mslsmenu_after_output'  => __( 'Text/HTML after the list', 'mslsmenu' ),
 			'mslsmenu_before_item'   => __( 'Text/HTML before each item', 'mslsmenu' ),
 			'mslsmenu_after_item'    => __( 'Text/HTML after each item', 'mslsmenu' ),
-		);
-		$callback = array( $this, 'input' );
+		];
+		$callback = [ $this, 'input' ];
 		foreach ( $fields as $id => $label ) {
 			$args['mslsmenu_input'] = $id;
 			add_settings_field( $id, $label, $callback, $page, $sid, $args );
@@ -121,20 +121,20 @@ class MslsMenu {
 	 * @param array $args
 	 */
 	function theme_location( $args ) {
-		$locations = array();
+		$locations = [];
 		foreach ( get_nav_menu_locations() as $key => $value ) {
 			$locations[ $key ] = $key;
 		}
 
-		$selected = (array) MslsOptions::instance()->mslsmenu_theme_location;
+		$selected = (array) lloc\Msls\MslsOptions::instance()->mslsmenu_theme_location;
 
-		$options = array(
+		$options = [
 			sprintf(
 				'<option value="" %s>%s</option>',
 				selected( true, ( in_array( '', $selected ) ), false ),
 				__( '-- empty --', 'mslsmenu' )
 			)
-		);
+		];
 		foreach ( $locations as $value => $description ) {
 			$options[] = sprintf(
 				'<option value="%s" %s>%s</option>',
@@ -153,7 +153,10 @@ class MslsMenu {
 	 * @param array $args
 	 */
 	function display( $args ) {
-		echo $args['msls_admin']->render_select( 'mslsmenu_display', MslsLink::get_types_description(), MslsOptions::instance()->mslsmenu_display );
+		$types   = lloc\Msls\MslsLink::get_types_description();
+		$display = lloc\Msls\MslsOptions::instance()->mslsmenu_display;
+
+		echo $args['msls_admin']->render_select( 'mslsmenu_display', $types, $display );
 	}
 
 	/**
@@ -167,4 +170,6 @@ class MslsMenu {
 
 }
 
-add_action( 'plugins_loaded', array( 'MslsMenu', 'init' ) );
+add_action( 'plugins_loaded', function () {
+	MslsMenu::init();
+} );
