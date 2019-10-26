@@ -46,14 +46,12 @@ class MslsMenu {
 	 * @return MslsMenu
 	 */
 	public static function init() {
-		$obj = new self;
-
 		if ( class_exists( lloc\Msls\MslsOptions::class ) ) {
-			add_filter( 'wp_nav_menu_items', array( $obj, 'nav_item' ), 10, 2 );
-			add_action( 'msls_admin_register', array( $obj, 'admin_register' ) );
+			add_filter( 'wp_nav_menu_items', [ MslsMenu::class, 'nav_item' ], 10, 2 );
+			add_action( 'msls_admin_register', [ MslsMenu::class, 'admin_register' ] );
 		}
 
-		return $obj;
+		return new self;
 	}
 
 	/**
@@ -170,6 +168,8 @@ class MslsMenu {
 
 }
 
-add_action( 'plugins_loaded', function () {
-	MslsMenu::init();
-} );
+if ( function_exists( 'add_action' ) ) {
+	add_action( 'plugins_loaded', function () {
+		MslsMenu::init();
+	} );
+}
