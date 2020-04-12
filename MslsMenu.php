@@ -46,12 +46,14 @@ class MslsMenu {
 	 * @return MslsMenu
 	 */
 	public static function init(): self {
+		$obj = new static();
+
 		if ( class_exists( lloc\Msls\MslsOptions::class ) ) {
-			add_filter( 'wp_nav_menu_items', [ MslsMenu::class, 'nav_item' ], 10, 2 );
-			add_action( 'msls_admin_register', [ MslsMenu::class, 'admin_register' ] );
+			add_filter( 'wp_nav_menu_items', [ $obj, 'nav_item' ], 10, 2 );
+			add_action( 'msls_admin_register', [ $obj, 'admin_register' ] );
 		}
 
-		return new self;
+		return $obj;
 	}
 
 	/**
@@ -85,7 +87,7 @@ class MslsMenu {
 	 *
 	 * @param string $page
 	 */
-	function admin_register( string $page ) {
+	public function admin_register( string $page ) {
 		$sid   = 'mslsmenu_section';
 		$label = __( 'Menu Settings', 'mslsmenu' );
 		add_settings_section( $sid, $label, null, $page );
