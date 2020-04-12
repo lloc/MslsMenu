@@ -4,7 +4,7 @@
 Plugin Name: MslsMenu
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 2.1
+Version: 2.2
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 Text Domain: mslsmenu
@@ -45,7 +45,7 @@ class MslsMenu {
 	 *
 	 * @return MslsMenu
 	 */
-	public static function init() {
+	public static function init(): self {
 		if ( class_exists( lloc\Msls\MslsOptions::class ) ) {
 			add_filter( 'wp_nav_menu_items', [ MslsMenu::class, 'nav_item' ], 10, 2 );
 			add_action( 'msls_admin_register', [ MslsMenu::class, 'admin_register' ] );
@@ -62,7 +62,7 @@ class MslsMenu {
 	 *
 	 * @return string
 	 */
-	function nav_item( $items, $args ) {
+	function nav_item( string $items, $args ): string {
 		$options   = lloc\Msls\MslsOptions::instance();
 		$locations = (array) $options->mslsmenu_theme_location;
 
@@ -85,7 +85,7 @@ class MslsMenu {
 	 *
 	 * @param string $page
 	 */
-	function admin_register( $page ) {
+	function admin_register( string $page ) {
 		$sid   = 'mslsmenu_section';
 		$label = __( 'Menu Settings', 'mslsmenu' );
 		add_settings_section( $sid, $label, null, $page );
@@ -118,7 +118,7 @@ class MslsMenu {
 	 *
 	 * @param array $args
 	 */
-	function theme_location( $args ) {
+	function theme_location( array $args ) {
 		$locations = [];
 		foreach ( get_nav_menu_locations() as $key => $value ) {
 			$locations[ $key ] = $key;
@@ -133,6 +133,7 @@ class MslsMenu {
 				__( '-- empty --', 'mslsmenu' )
 			)
 		];
+		
 		foreach ( $locations as $value => $description ) {
 			$options[] = sprintf(
 				'<option value="%s" %s>%s</option>',
@@ -150,11 +151,16 @@ class MslsMenu {
 	 *
 	 * @param array $args
 	 */
-	function display( $args ) {
+	function display( array $args ) {
 		$types   = lloc\Msls\MslsLink::get_types_description();
 		$display = lloc\Msls\MslsOptions::instance()->mslsmenu_display;
 
-		echo $args['msls_admin']->render_select( 'mslsmenu_display', $types, $display );
+		if ( class_exists( 'lloc\Msls\Component\Input\Select' ) ) {
+			echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, $display ) )->render();
+		}
+		else {
+			echo $args['msls_admin']->render_select( 'mslsmenu_display', $types, $display );
+		}
 	}
 
 	/**
@@ -162,8 +168,16 @@ class MslsMenu {
 	 *
 	 * @param array $args
 	 */
-	function input( $args ) {
-		echo $args['msls_admin']->render_input( $args['mslsmenu_input'] );
+	function input( array $args ) {
+		if ( class_exists( 'lloc\Msls\Component\Input\Text' ) ) {
+			$key   = $args['mslsmenu_input'];
+			$value = lloc\Msls\MslsOptions::instance()->$key;
+
+			echo ( new lloc\Msls\Component\Input\Text( $key, $value  ) )->render();
+		}
+		else {
+			echo $args['msls_admin']->render_input( $args['mslsmenu_input'] );
+		}
 	}
 
 }
