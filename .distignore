@@ -1,0 +1,8 @@
+/.wordpress-org
+/.git
+/.github
+.distignore
+.gitattributes
+.gitignore
+.scrutinizer.yml
+README.md
