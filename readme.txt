@@ -4,7 +4,7 @@ Contributors: realloc
 Donate link: http://www.greenpeace.org/international/
 Tags: multilingual, multisite, language, switcher, international, localization, i18n, menu, nav_menu
 Requires at least: 3.6.1
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 7.0
 Stable tag: 2.2
 License: GPLv2 or later

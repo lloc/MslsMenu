@@ -121,28 +121,12 @@ class MslsMenu {
 	 * @param array $args
 	 */
 	function theme_location( array $args ) {
-		$locations = [];
-		foreach ( get_nav_menu_locations() as $key => $value ) {
-			$locations[ $key ] = $key;
-		}
-
-		$selected = (array) lloc\Msls\MslsOptions::instance()->mslsmenu_theme_location;
-
-		$options = [
-			sprintf(
-				'<option value="" %s>%s</option>',
-				selected( true, ( in_array( '', $selected ) ), false ),
-				__( '-- empty --', 'mslsmenu' )
-			)
-		];
+		$locations = get_nav_menu_locations();
+		$selected  = (array) lloc\Msls\MslsOptions::instance()->mslsmenu_theme_location;
+		$options   = [ sprintf( '<option value="" %s>%s</option>', selected( true, in_array( '', $selected ), false ), __( '-- empty --', 'mslsmenu' ) ) ];
 		
-		foreach ( $locations as $value => $description ) {
-			$options[] = sprintf(
-				'<option value="%s" %s>%s</option>',
-				$value,
-				selected( true, ( in_array( $value, $selected ) ), false ),
-				$description
-			);
+		foreach ( array_keys( $locations ) as $value ) {
+			$options[] = sprintf( '<option value="%1$s" %2$s>%1$s</option>', $value, selected( true, in_array( $value, $selected ), false ) );
 		}
 
 		printf( '<select id="%1$s" name="msls[%1$s][]" multiple="multiple">%2$s</select>', 'mslsmenu_theme_location', implode( '', $options ) );
