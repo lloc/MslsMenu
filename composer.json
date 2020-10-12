@@ -1,0 +1,35 @@
+{
+  "name": "lloc/mslsmenu",
+  "description": "MslsMenu",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://it.wordpress.org/plugins/mslsmenu/",
+  "require": {
+    "php": ">=7.0",
+    "composer/installers": "~1.9.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": ">=7",
+    "brain/monkey": "2.*"
+  },
+  "autoload-dev": {
+      "files": [ "MslsMenu.php" ]
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "authors": [
+    {
+      "name": "Dennis Ploetner",
+      "email": "re@lloc.de",
+      "homepage": "http://lloc.de"
+    }
+  ],
+  "keywords": [
+    "multilingual",
+    "multisite language switcher",
+    "msls",
+    "add-on",
+    "menu"
+  ]
+}
