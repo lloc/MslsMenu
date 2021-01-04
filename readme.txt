@@ -37,7 +37,7 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 
 = 2.2.2 =
 * Tests added
-* PHP 7.1 as mnimum declared
+* PHP 7.1 as minimum declared
 
 = 2.2.1 =
 * Optimization in use of get_nav_menu_locations
