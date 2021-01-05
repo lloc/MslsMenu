@@ -15,7 +15,7 @@ class MslsMenu extends TestCase {
 
 	public function test_init() {
 		Functions\expect( 'load_plugin_textdomain' );
-		Functions\expect( 'plugin_basename' );
+		Functions\when( 'plugin_basename' )->justReturn( 'abc' );
 
 		$obj = \MslsMenu::init();
 

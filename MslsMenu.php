@@ -4,7 +4,7 @@
 Plugin Name: MslsMenu
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 2.2.2
+Version: 2.2.3
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 Text Domain: mslsmenu
@@ -26,6 +26,8 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+
+declare( strict_types=1 );
 
 /**
  * MslsMenu Class
@@ -94,7 +96,7 @@ class MslsMenu {
 	public function admin_register( string $page ) {
 		$label = __( 'Menu Settings', 'mslsmenu' );
 
-		$this->page  = $page;
+		$this->page = $page;
 
 		add_settings_section( self::SID, $label, [ $this, 'add_settings' ], $page );
 	}
@@ -135,7 +137,7 @@ class MslsMenu {
 		$locations = get_nav_menu_locations();
 		$selected  = (array) lloc\Msls\MslsOptions::instance()->mslsmenu_theme_location;
 		$options   = [ sprintf( '<option value="" %s>%s</option>', selected( true, in_array( '', $selected ), false ), __( '-- empty --', 'mslsmenu' ) ) ];
-		
+
 		foreach ( array_keys( $locations ) as $value ) {
 			$options[] = sprintf( '<option value="%1$s" %2$s>%1$s</option>', $value, selected( true, in_array( $value, $selected ), false ) );
 		}
@@ -154,8 +156,7 @@ class MslsMenu {
 
 		if ( class_exists( 'lloc\Msls\Component\Input\Select' ) ) {
 			echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, $display ) )->render();
-		}
-		else {
+		} else {
 			echo $args['msls_admin']->render_select( 'mslsmenu_display', $types, $display );
 		}
 	}
@@ -170,9 +171,8 @@ class MslsMenu {
 			$key   = $args['mslsmenu_input'];
 			$value = lloc\Msls\MslsOptions::instance()->$key;
 
-			echo ( new lloc\Msls\Component\Input\Text( $key, $value  ) )->render();
-		}
-		else {
+			echo ( new lloc\Msls\Component\Input\Text( $key, $value ) )->render();
+		} else {
 			echo $args['msls_admin']->render_input( $args['mslsmenu_input'] );
 		}
 	}
