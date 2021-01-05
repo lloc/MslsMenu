@@ -33,6 +33,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 class MslsMenu {
 
+	protected $page;
+
+	const SID = 'mslsmenu_section';
+
 	/**
 	 * MslsMenu constructor.
 	 */
@@ -46,7 +50,7 @@ class MslsMenu {
 	 * @return MslsMenu
 	 */
 	public static function init(): self {
-		$obj = new static();
+		$obj = new self();
 
 		if ( class_exists( lloc\Msls\MslsOptions::class ) ) {
 			add_filter( 'wp_nav_menu_items', [ $obj, 'nav_item' ], 10, 2 );
@@ -88,19 +92,26 @@ class MslsMenu {
 	 * @param string $page
 	 */
 	public function admin_register( string $page ) {
-		$sid   = 'mslsmenu_section';
 		$label = __( 'Menu Settings', 'mslsmenu' );
-		add_settings_section( $sid, $label, null, $page );
 
+		$this->page  = $page;
+
+		add_settings_section( self::SID, $label, [ $this, 'add_settings' ], $page );
+	}
+
+	/**
+	 * Callback for add_settings_section in admin_register
+	 */
+	public function add_settings() {
 		$args = [ 'msls_admin' => lloc\Msls\MslsAdmin::init() ];
 
 		$label    = __( 'Theme Location', 'mslsmenu' );
 		$callback = [ $this, 'theme_location' ];
-		add_settings_field( 'mslsmenu_theme_location', $label, $callback, $page, $sid, $args );
+		add_settings_field( 'mslsmenu_theme_location', $label, $callback, $this->page, self::SID, $args );
 
 		$label    = __( 'Display', 'mslsmenu' );
 		$callback = [ $this, 'display' ];
-		add_settings_field( 'mslsmenu_display', $label, $callback, $page, $sid, $args );
+		add_settings_field( 'mslsmenu_display', $label, $callback, $this->page, self::SID, $args );
 
 		$fields   = [
 			'mslsmenu_before_output' => __( 'Text/HTML before the list', 'mslsmenu' ),
@@ -111,7 +122,7 @@ class MslsMenu {
 		$callback = [ $this, 'input' ];
 		foreach ( $fields as $id => $label ) {
 			$args['mslsmenu_input'] = $id;
-			add_settings_field( $id, $label, $callback, $page, $sid, $args );
+			add_settings_field( $id, $label, $callback, $this->page, self::SID, $args );
 		}
 	}
 

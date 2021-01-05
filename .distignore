@@ -1,8 +1,17 @@
 /.wordpress-org
 /.git
 /.github
+/reports
+/tests
 .distignore
 .gitattributes
 .gitignore
 .scrutinizer.yml
+Changelog.md
+composer.json
+composer.lock
+package.json
+package-lock.json
+phpdoc.xml
+phpunit.xml
 README.md
