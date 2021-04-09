@@ -4,9 +4,9 @@ Contributors: realloc
 Donate link: http://www.greenpeace.org/international/
 Tags: multilingual, multisite, language, switcher, international, localization, i18n, menu, nav_menu
 Requires at least: 3.6.1
-Tested up to: 5.6
+Tested up to: 5.7
 Requires PHP: 7.1
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,9 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 4. Output in the primary nav menu
 
 == Changelog ==
+
+= 2.2.4 =
+* Unit tests added
 
 = 2.2.3 =
 * PHPStan tested
