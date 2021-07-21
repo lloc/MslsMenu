@@ -4,7 +4,7 @@
 Plugin Name: MslsMenu
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 2.2.4
+Version: 2.2.5
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 Text Domain: mslsmenu
@@ -133,7 +133,7 @@ class MslsMenu {
 	 *
 	 * @param array $args
 	 */
-	function theme_location( array $args ) {
+	public function theme_location( array $args ) {
 		$locations = get_nav_menu_locations();
 		$selected  = (array) lloc\Msls\MslsOptions::instance()->mslsmenu_theme_location;
 		$options   = [ sprintf( '<option value="" %s>%s</option>', selected( true, in_array( '', $selected ), false ), __( '-- empty --', 'mslsmenu' ) ) ];
@@ -150,7 +150,7 @@ class MslsMenu {
 	 *
 	 * @param array $args
 	 */
-	function display( array $args ) {
+	public function display( array $args ) {
 		$types   = lloc\Msls\MslsLink::get_types_description();
 		$display = lloc\Msls\MslsOptions::instance()->mslsmenu_display;
 
@@ -166,7 +166,7 @@ class MslsMenu {
 	 *
 	 * @param array $args
 	 */
-	function input( array $args ) {
+	public function input( array $args ) {
 		if ( class_exists( 'lloc\Msls\Component\Input\Text' ) ) {
 			$key   = $args['mslsmenu_input'];
 			$value = lloc\Msls\MslsOptions::instance()->$key;
@@ -179,8 +179,10 @@ class MslsMenu {
 
 }
 
+// @codeCoverageIgnoreStart
 if ( function_exists( 'add_action' ) ) {
 	add_action( 'plugins_loaded', function () {
 		MslsMenu::init();
 	} );
 }
+// @codeCoverageIgnoreEnd

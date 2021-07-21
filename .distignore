@@ -13,5 +13,6 @@ composer.lock
 package.json
 package-lock.json
 phpdoc.xml
+phpstan.neon
 phpunit.xml
 README.md
