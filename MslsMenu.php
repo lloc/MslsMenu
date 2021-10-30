@@ -52,14 +52,12 @@ class MslsMenu {
 	 * @return MslsMenu
 	 */
 	public static function init(): self {
-		$obj = new self();
-
 		if ( class_exists( lloc\Msls\MslsOptions::class ) ) {
-			add_filter( 'wp_nav_menu_items', [ $obj, 'nav_item' ], 10, 2 );
-			add_action( 'msls_admin_register', [ $obj, 'admin_register' ] );
+			add_filter( 'wp_nav_menu_items', [ __CLASS__, 'nav_item' ], 10, 2 );
+			add_action( 'msls_admin_register', [ __CLASS__, 'admin_register' ] );
 		}
 
-		return $obj;
+		return new self();
 	}
 
 	/**
@@ -70,7 +68,7 @@ class MslsMenu {
 	 *
 	 * @return string
 	 */
-	function nav_item( string $items, $args ): string {
+	public function nav_item( string $items, $args ): string {
 		$options   = lloc\Msls\MslsOptions::instance();
 		$locations = (array) $options->mslsmenu_theme_location;
 
