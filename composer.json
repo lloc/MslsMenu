@@ -35,5 +35,11 @@
     "msls",
     "add-on",
     "menu"
-  ]
+  ],
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "phpstan/extension-installer": true
+    }
+  }
 }
