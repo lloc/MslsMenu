@@ -12,11 +12,11 @@ class MslsMenu extends TestCase {
 		parent::setUp();
 		Monkey\setUp();
 
-		Functions\expect( 'load_plugin_textdomain' );
+		Functions\expect( 'load_plugin_textdomain' )->atLeast()->once();
 		Functions\when( 'plugin_basename' )->justReturn( 'abc' );
 	}
 
-	public function test_init() {
+	public function test_init(): void {
 		$this->assertInstanceOf( \MslsMenu::class, \MslsMenu::init() );
 	}
 

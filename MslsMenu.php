@@ -64,7 +64,7 @@ class MslsMenu {
 	 * Callback for wp_nav_menu_items
 	 *
 	 * @param string $items
-	 * @param StdClass $args
+	 * @param \stdClass $args
 	 *
 	 * @return string
 	 */

@@ -19,7 +19,7 @@
   },
   "scripts": {
     "test": "./vendor/bin/phpunit",
-    "coverage": "./vendor/bin/phpunit --coverage-html ./reports/php/coverage",
+    "coverage": "php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-html ./reports/php/coverage",
     "analyze": "./vendor/bin/phpstan analyze"
   },
   "authors": [
