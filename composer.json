@@ -19,7 +19,7 @@
   },
   "scripts": {
     "test": "./vendor/bin/phpunit",
-    "coverage": "./vendor/bin/phpunit --coverage-html ./reports/php/coverage",
+    "coverage": "php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-html ./reports/php/coverage",
     "analyze": "./vendor/bin/phpstan analyze"
   },
   "authors": [
@@ -35,5 +35,11 @@
     "msls",
     "add-on",
     "menu"
-  ]
+  ],
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "phpstan/extension-installer": true
+    }
+  }
 }
