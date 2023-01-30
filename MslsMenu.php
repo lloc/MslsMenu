@@ -4,7 +4,7 @@
 Plugin Name: MslsMenu
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 2.2.5
+Version: 2.2.6
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 Text Domain: mslsmenu
@@ -35,29 +35,38 @@ declare( strict_types=1 );
  */
 class MslsMenu {
 
+	/**
+	 * @var string
+	 */
 	protected $page;
+
+	protected $options;
 
 	const SID = 'mslsmenu_section';
 
 	/**
-	 * MslsMenu constructor.
+	 * @param ?object $options
 	 */
-	public function __construct() {
+	public function __construct( $options ) {
+		$this->options = $options;
+
 		load_plugin_textdomain( 'mslsmenu', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
 	 * Plugin init
 	 *
+	 * @param ?object $options
+	 *
 	 * @return MslsMenu
 	 */
-	public static function init(): self {
-		if ( class_exists( lloc\Msls\MslsOptions::class ) ) {
+	public static function init( $options ): MslsMenu {
+		if ( ! is_null( $options ) ) {
 			add_filter( 'wp_nav_menu_items', [ __CLASS__, 'nav_item' ], 10, 2 );
 			add_action( 'msls_admin_register', [ __CLASS__, 'admin_register' ] );
 		}
 
-		return new self();
+		return new self( $options );
 	}
 
 	/**
@@ -69,18 +78,18 @@ class MslsMenu {
 	 * @return string
 	 */
 	public function nav_item( string $items, $args ): string {
-		$options   = lloc\Msls\MslsOptions::instance();
-		$locations = (array) $options->mslsmenu_theme_location;
+		$menu_locations = $this->options->mslsmenu_theme_location ?? '';
+		$theme_location = $args->theme_location ?? '';
 
-		if ( in_array( $args->theme_location, $locations ) ) {
-			$mslsmenu = '';
+		if ( is_array( $menu_locations ) && in_array( $theme_location, $menu_locations ) ) {
+			$menu = '';
 
 			$obj = lloc\Msls\MslsOutput::init();
-			foreach ( $obj->get( (int) $options->mslsmenu_display, false, (int) $options->only_with_translation ) as $item ) {
-				$mslsmenu .= $options->mslsmenu_before_item . $item . $options->mslsmenu_after_item;
+			foreach ( $obj->get( (int) $this->options->mslsmenu_display, false, (int) $this->options->only_with_translation ) as $item ) {
+				$menu .= $this->options->mslsmenu_before_item . $item . $this->options->mslsmenu_after_item;
 			}
 
-			$items .= $options->mslsmenu_before_output . $mslsmenu . $options->mslsmenu_after_output;
+			$items .= $this->options->mslsmenu_before_output . $menu . $this->options->mslsmenu_after_output;
 		}
 
 		return $items;
@@ -102,7 +111,7 @@ class MslsMenu {
 	/**
 	 * Callback for add_settings_section in admin_register
 	 */
-	public function add_settings() {
+	public function add_settings(): void {
 		$args = [ 'msls_admin' => lloc\Msls\MslsAdmin::init() ];
 
 		$label    = __( 'Theme Location', 'mslsmenu' );
@@ -113,12 +122,13 @@ class MslsMenu {
 		$callback = [ $this, 'display' ];
 		add_settings_field( 'mslsmenu_display', $label, $callback, $this->page, self::SID, $args );
 
-		$fields   = [
+		$fields = [
 			'mslsmenu_before_output' => __( 'Text/HTML before the list', 'mslsmenu' ),
 			'mslsmenu_after_output'  => __( 'Text/HTML after the list', 'mslsmenu' ),
 			'mslsmenu_before_item'   => __( 'Text/HTML before each item', 'mslsmenu' ),
 			'mslsmenu_after_item'    => __( 'Text/HTML after each item', 'mslsmenu' ),
 		];
+
 		$callback = [ $this, 'input' ];
 		foreach ( $fields as $id => $label ) {
 			$args['mslsmenu_input'] = $id;
@@ -132,15 +142,27 @@ class MslsMenu {
 	 * @param array $args
 	 */
 	public function theme_location( array $args ) {
-		$locations = get_nav_menu_locations();
-		$selected  = (array) lloc\Msls\MslsOptions::instance()->mslsmenu_theme_location;
-		$options   = [ sprintf( '<option value="" %s>%s</option>', selected( true, in_array( '', $selected ), false ), __( '-- empty --', 'mslsmenu' ) ) ];
+		$menu_locations  = get_nav_menu_locations();
+		$theme_locations = $this->options->mslsmenu_theme_location ?? '';
+		$options         = [
+			sprintf( '<option value="" %s>%s</option>', $this->selected( '', $theme_locations ), __( '-- empty --', 'mslsmenu' ) )
+		];
 
-		foreach ( array_keys( $locations ) as $value ) {
-			$options[] = sprintf( '<option value="%1$s" %2$s>%1$s</option>', $value, selected( true, in_array( $value, $selected ), false ) );
+		foreach ( array_keys( $menu_locations ) as $value ) {
+			$options[] = sprintf( '<option value="%1$s" %2$s>%1$s</option>', $value, $this->selected( $value, $theme_locations ) );
 		}
 
 		printf( '<select id="%1$s" name="msls[%1$s][]" multiple="multiple">%2$s</select>', 'mslsmenu_theme_location', implode( '', $options ) );
+	}
+
+	/**
+	 * @param string $needle
+	 * @param mixed $locations
+	 *
+	 * @return string
+	 */
+	protected function selected( string $needle, $locations ): string {
+		return is_array( $locations ) ? selected( true, in_array( $needle, $locations ), false ) : '';
 	}
 
 	/**
@@ -150,9 +172,9 @@ class MslsMenu {
 	 */
 	public function display( array $args ) {
 		$types   = lloc\Msls\MslsLink::get_types_description();
-		$display = lloc\Msls\MslsOptions::instance()->mslsmenu_display;
+		$display = $this->options->mslsmenu_display ?? 0;
 
-		if ( class_exists( 'lloc\Msls\Component\Input\Select' ) ) {
+		if ( class_exists( lloc\Msls\Component\Input\Select::class ) ) {
 			echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, $display ) )->render();
 		} else {
 			echo $args['msls_admin']->render_select( 'mslsmenu_display', $types, $display );
@@ -166,8 +188,8 @@ class MslsMenu {
 	 */
 	public function input( array $args ) {
 		if ( class_exists( 'lloc\Msls\Component\Input\Text' ) ) {
-			$key   = $args['mslsmenu_input'];
-			$value = lloc\Msls\MslsOptions::instance()->$key;
+			$key   = $args['mslsmenu_input'] ?? '';
+			$value = $this->options->$key ?? '';
 
 			echo ( new lloc\Msls\Component\Input\Text( $key, $value ) )->render();
 		} else {
@@ -180,7 +202,8 @@ class MslsMenu {
 // @codeCoverageIgnoreStart
 if ( function_exists( 'add_action' ) ) {
 	add_action( 'plugins_loaded', function () {
-		MslsMenu::init();
+		$options = class_exists( lloc\Msls\MslsOptions::class ) ? lloc\Msls\MslsOptions::instance() : null;
+		MslsMenu::init( $options );
 	} );
 }
 // @codeCoverageIgnoreEnd
