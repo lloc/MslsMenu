@@ -40,7 +40,8 @@
   "config": {
     "allow-plugins": {
       "composer/installers": true,
-      "phpstan/extension-installer": true
+      "phpstan/extension-installer": true,
+      "pestphp/pest-plugin": true
     }
   }
 }
