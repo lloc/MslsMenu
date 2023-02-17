@@ -71,12 +71,12 @@ it( 'calls get_nav_menu_locations on $sut->theme_location()', function () {
 	$this->expectOutputString( $expected );
 } );
 
-it( 'test display', function () {
+it( 'prints a string on $sut->display()', function () {
 	$this->sut->display( [] );
 	$this->expectOutputString( '<select></select>' );
 } );
 
-it( 'test input', function () {
+it( 'prints a string on $sut->input()', function () {
 	$this->sut->input( [] );
 	$this->expectOutputString( '<input />' );
 } );
