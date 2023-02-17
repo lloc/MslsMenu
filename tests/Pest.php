@@ -36,12 +36,16 @@ class Output {
 
 class Select {
 
+	public function __construct( ...$args ) { }
+
 	public function render(): string {
 		return '<select></select>';
 	}
 }
 
 class Text {
+
+	public function __construct( ...$args ) { }
 
 	public function render(): string {
 		return '<input />';
