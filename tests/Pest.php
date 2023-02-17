@@ -28,19 +28,23 @@ class Output {
 	public static function init() {
 		return new self();
 	}
+
+	public function get(): array {
+		return [ 'de', 'en' ];
+	}
 }
 
 class Select {
 
 	public function render(): string {
-		return '';
+		return '<select></select>';
 	}
 }
 
 class Text {
 
 	public function render(): string {
-		return '';
+		return '<input />';
 	}
 }
 

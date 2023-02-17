@@ -3,4 +3,4 @@ parameters:
     paths:
         - MslsMenu.php
     bootstrapFiles:
-        - tests/classAliases.php
+        - tests/Pest.php
