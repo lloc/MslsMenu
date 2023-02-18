@@ -9,6 +9,7 @@ Requires PHP: 7.1
 Stable tag: 2.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+GitHub Plugin URI: lloc/MslsMenu
 
 Adds the output of the Multisite Language Switcher to one (or more) of your navigation menu(s)
 
