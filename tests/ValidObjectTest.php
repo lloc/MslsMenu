@@ -14,7 +14,6 @@ beforeAll( function () {
 		'__',
 		'selected' => 'selected="selected"',
 	] );
-
 } );
 
 beforeEach( function() {
