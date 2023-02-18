@@ -6,7 +6,7 @@ Tags: multilingual, multisite, language, switcher, international, localization, 
 Requires at least: 3.6.1
 Tested up to: 6.1
 Requires PHP: 7.1
-Stable tag: 2.2.6
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 GitHub Plugin URI: lloc/MslsMenu
@@ -45,41 +45,16 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 * WordPress 5.8 tested
 
 = 2.2.4 =
-* Unit tests added
+* Pest for Unit tests added
 
 = 2.2.3 =
-* PHPStan tested
-
-= 2.2.2 =
-* Tests added
 * PHP 7.1 as minimum declared
-
-= 2.2.1 =
-* Optimization in use of get_nav_menu_locations
 
 = 2.2 =
 * compatibility con MSLS 2.4
 
-= 2.1 =
-* reflect settings of MSLS
-
 = 2.0 =
 * compatibility con MSLS 2.0
-
-= 1.4 =
-* plugin inits when plugins_loaded runs and adds callback to hooks in its factory now
-
-= 1.3.1 =
-* fix for [fatal eror on activation](https://wordpress.org/support/topic/fatal-error-warning-cannot-be-activated)
- 
-= 1.3 =
-* defensive loading, factory added and chore
-
-= 1.2 =
-* empty menu-location is now an option
-
-= 1.1 =
-* selector for multiple menus added
 
 = 1.0 =
 * marked as stable
