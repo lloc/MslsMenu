@@ -46,13 +46,15 @@ it( 'calls add_settings_section on $sut->admin_register()', function () {
 	$this->sut->admin_register( 'test' );
 } );
 
-it( 'returns an empty string on $sut->nav_item() when factory received null', function() {
+it( 'returns an empty string on $sut->nav_item()', function() {
+	$expected = '';
+
 	$args = new \stdClass();
 	$args->theme_locations = 'test';
 
 	$result = $this->sut->nav_item( '', $args );
 
-	expect( $result )->toEqual( '' );
+	expect( $result )->toEqual( $expected );
 } );
 
 it( 'calls add_settings_field on $sut->add_settings()', function () {
@@ -62,21 +64,27 @@ it( 'calls add_settings_field on $sut->add_settings()', function () {
 } );
 
 it( 'calls get_nav_menu_locations on $sut->theme_location()', function () {
-	Functions\expect( 'get_nav_menu_locations' )->once()->andReturn( [] );
+	Functions\expect( 'get_nav_menu_locations' )->once()->andReturn( [ 'test' => 1 ] );
+
+	$expected = '<select id="mslsmenu_theme_location" name="msls[mslsmenu_theme_location][]" multiple="multiple"><option value="" selected="selected">-- empty --</option><option value="test" selected="selected">test</option></select>';
 
 	$this->sut->theme_location( [] );
-
-	$expected = '<select id="mslsmenu_theme_location" name="msls[mslsmenu_theme_location][]" multiple="multiple"><option value="" selected="selected">-- empty --</option></select>';
 
 	$this->expectOutputString( $expected );
 } );
 
 it( 'prints a string on $sut->display()', function () {
+	$expected = '<select></select>';
+
 	$this->sut->display( [] );
-	$this->expectOutputString( '<select></select>' );
+
+	$this->expectOutputString( $expected );
 } );
 
 it( 'prints a string on $sut->input()', function () {
+	$expected = '<input />';
+
 	$this->sut->input( [] );
-	$this->expectOutputString( '<input />' );
+
+	$this->expectOutputString( $expected );
 } );
