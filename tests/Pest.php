@@ -29,7 +29,7 @@ class Output {
 		return new self();
 	}
 
-	public function get(): array {
+	public function get( $display, $filter = false, $exists = false ) {
 		return [ 'de', 'en' ];
 	}
 }
