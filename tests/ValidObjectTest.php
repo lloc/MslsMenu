@@ -32,11 +32,11 @@ it( 'returns an instance of MslsMenu when factory receives an MslsOptions object
 } );
 
 it( 'adds a filter when factory receives an MslsOptions object', function () {
-	expect( has_filter( 'wp_nav_menu_items', [ \MslsMenu::class, 'nav_item' ] ) )->toEqual( 10 );
+	expect( has_filter( 'wp_nav_menu_items', [ $this->sut, 'nav_item' ] ) )->toEqual( 10 );
 } );
 
 it( 'adds an action when factory receives an MslsOptions object', function () {
-	expect( has_action( 'msls_admin_register', [ \MslsMenu::class, 'admin_register' ] ) )->toEqual( 10 );
+	expect( has_action( 'msls_admin_register', [ $this->sut, 'admin_register' ] ) )->toEqual( 10 );
 } );
 
 it( 'calls add_settings_section on $sut->admin_register()', function () {
