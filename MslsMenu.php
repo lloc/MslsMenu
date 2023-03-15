@@ -40,6 +40,9 @@ class MslsMenu {
 	 */
 	protected $page;
 
+	/**
+	 * @var object|null
+	 */
 	protected $options;
 
 	const SID = 'mslsmenu_section';
@@ -61,12 +64,14 @@ class MslsMenu {
 	 * @return MslsMenu
 	 */
 	public static function init( $options ): MslsMenu {
+		$obj = new self( $options );
+
 		if ( ! is_null( $options ) ) {
-			add_filter( 'wp_nav_menu_items', [ __CLASS__, 'nav_item' ], 10, 2 );
-			add_action( 'msls_admin_register', [ __CLASS__, 'admin_register' ] );
+			add_filter( 'wp_nav_menu_items', [ $obj, 'nav_item' ], 10, 2 );
+			add_action( 'msls_admin_register', [ $obj, 'admin_register' ] );
 		}
 
-		return new self( $options );
+		return $obj;
 	}
 
 	/**
