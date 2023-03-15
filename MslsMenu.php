@@ -187,7 +187,7 @@ class MslsMenu {
 			// @codeCoverageIgnoreEnd
 		}
 
-		echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, $display ) )->render();
+		echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, intval( $display ) ) )->render();
 	}
 
 	/**
