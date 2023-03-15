@@ -177,7 +177,7 @@ class MslsMenu {
 	 */
 	public function display( array $args ) {
 		$types   = lloc\Msls\MslsLink::get_types_description();
-		$display = $this->options->mslsmenu_display ?? 0;
+		$display = $this->options->mslsmenu_display ?? '0';
 
 		if ( ! class_exists( lloc\Msls\Component\Input\Select::class ) ) {
 			// @codeCoverageIgnoreStart
@@ -187,7 +187,7 @@ class MslsMenu {
 			// @codeCoverageIgnoreEnd
 		}
 
-		echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, intval( $display ) ) )->render();
+		echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, $display ) )->render();
 	}
 
 	/**
