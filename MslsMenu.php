@@ -4,7 +4,7 @@
 Plugin Name: MslsMenu
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 2.3.1
+Version: 2.3.2
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 Text Domain: mslsmenu
@@ -41,7 +41,7 @@ class MslsMenu {
 	protected $page;
 
 	/**
-	 * @var object|null
+	 * @var ?object
 	 */
 	protected $options;
 
@@ -82,7 +82,7 @@ class MslsMenu {
 	 *
 	 * @return string
 	 */
-	public function nav_item( string $items, $args ): string {
+	public function nav_item( string $items, \stdClass $args ): string {
 		$menu_locations = $this->options->mslsmenu_theme_location ?? '';
 		$theme_location = $args->theme_location ?? '';
 

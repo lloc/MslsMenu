@@ -6,7 +6,7 @@ Tags: multilingual, multisite, language, switcher, international, localization, 
 Requires at least: 3.6.1
 Tested up to: 6.2
 Requires PHP: 7.1
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,9 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 4. Output in the primary nav menu
 
 == Changelog ==
+
+= 2.3.2 =
+* WordPress 6.3 tested
 
 = 2.3.1 =
 * WordPress 6.2.2 tested
