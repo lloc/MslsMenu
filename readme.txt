@@ -35,6 +35,10 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 
 == Changelog ==
 
+= 2.3.3 =
+* WordPress 6.5 tested
+* "Requires Plugins" added
+
 = 2.3.2 =
 * WordPress 6.3 tested
 
