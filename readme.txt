@@ -6,7 +6,7 @@ Tags: multilingual, multisite, language, switcher, international, localization, 
 Requires at least: 5.3
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 2.3.3
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,7 +35,7 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 
 == Changelog ==
 
-= 2.3.3 =
+= 2.4.0 =
 * WordPress 6.5 tested
 * "Requires Plugins" added
 
