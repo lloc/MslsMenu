@@ -36,6 +36,8 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 == Changelog ==
 
 = 2.4.1 =
+* readme.txt tags updated
+* Plugin check issues fixed
 
 = 2.4.0 =
 * WordPress 6.5 tested
