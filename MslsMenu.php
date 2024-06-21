@@ -155,7 +155,7 @@ class MslsMenu {
 		];
 
 		foreach ( array_keys( $menu_locations ) as $value ) {
-			$options[] = sprintf( '<option value="%1$s" %2$s>%1$s</option>', $value, $this->selected( $value, $theme_locations ) );
+			$options[] = sprintf( '<option value="%1$s" %2$s>%1$s</option>', esc_attr( $value ), $this->selected( $value, $theme_locations ) );
 		}
 
 		printf( '<select id="%1$s" name="msls[%1$s][]" multiple="multiple">%2$s</select>', 'mslsmenu_theme_location', implode( '', $options ) );
