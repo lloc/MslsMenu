@@ -185,13 +185,16 @@ class MslsMenu {
          */
 		if ( ! class_exists( lloc\Msls\Component\Input\Select::class ) ) {
 			// @codeCoverageIgnoreStart
-			echo $args['msls_admin']->render_select( 'mslsmenu_display', $types, $display ); // XSS ok
+
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $args['msls_admin']->render_select( 'mslsmenu_display', $types, $display );
 
 			return;
 			// @codeCoverageIgnoreEnd
 		}
 
-		echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, $display ) )->render(); // XSS ok
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, $display ) )->render();
 	}
 
 	/**
@@ -205,7 +208,9 @@ class MslsMenu {
          */
 		if ( ! class_exists( 'lloc\Msls\Component\Input\Text' ) ) {
 			// @codeCoverageIgnoreStart
-			echo $args['msls_admin']->render_input( $args['mslsmenu_input'] ); // XSS ok
+
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            echo $args['msls_admin']->render_input( $args['mslsmenu_input'] );
 
 			return;
 			// @codeCoverageIgnoreEnd
@@ -214,7 +219,8 @@ class MslsMenu {
 		$key   = $args['mslsmenu_input'] ?? '';
 		$value = $this->options->$key ?? '';
 
-		echo ( new lloc\Msls\Component\Input\Text( $key, $value ) )->render(); // XSS ok
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo ( new lloc\Msls\Component\Input\Text( $key, $value ) )->render();
 	}
 
 }
