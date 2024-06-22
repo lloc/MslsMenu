@@ -158,7 +158,8 @@ class MslsMenu {
 			$options[] = sprintf( '<option value="%1$s" %2$s>%1$s</option>', esc_attr( $value ), $this->selected( $value, $theme_locations ) );
 		}
 
-		printf( '<select id="%1$s" name="msls[%1$s][]" multiple="multiple">%2$s</select>', 'mslsmenu_theme_location', implode( '', $options ) );
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        printf( '<select id="%1$s" name="msls[%1$s][]" multiple="multiple">%2$s</select>', 'mslsmenu_theme_location', implode( '', $options ) );
 	}
 
 	/**
