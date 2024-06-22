@@ -180,15 +180,18 @@ class MslsMenu {
 		$types   = lloc\Msls\MslsLink::get_types_description();
 		$display = $this->options->mslsmenu_display ?? '0';
 
+        /**
+         * Backward compatibility
+         */
 		if ( ! class_exists( lloc\Msls\Component\Input\Select::class ) ) {
 			// @codeCoverageIgnoreStart
-			echo $args['msls_admin']->render_select( 'mslsmenu_display', $types, $display );
+			echo $args['msls_admin']->render_select( 'mslsmenu_display', $types, $display ); // XSS ok
 
 			return;
 			// @codeCoverageIgnoreEnd
 		}
 
-		echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, $display ) )->render();
+		echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, $display ) )->render(); // XSS ok
 	}
 
 	/**
@@ -197,9 +200,12 @@ class MslsMenu {
 	 * @param array $args
 	 */
 	public function input( array $args ) {
+        /**
+         * Backward compatibility
+         */
 		if ( ! class_exists( 'lloc\Msls\Component\Input\Text' ) ) {
 			// @codeCoverageIgnoreStart
-			echo $args['msls_admin']->render_input( $args['mslsmenu_input'] );
+			echo $args['msls_admin']->render_input( $args['mslsmenu_input'] ); // XSS ok
 
 			return;
 			// @codeCoverageIgnoreEnd
@@ -208,7 +214,7 @@ class MslsMenu {
 		$key   = $args['mslsmenu_input'] ?? '';
 		$value = $this->options->$key ?? '';
 
-		echo ( new lloc\Msls\Component\Input\Text( $key, $value ) )->render();
+		echo ( new lloc\Msls\Component\Input\Text( $key, $value ) )->render(); // XSS ok
 	}
 
 }
