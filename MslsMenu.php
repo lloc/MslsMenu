@@ -151,7 +151,7 @@ class MslsMenu {
 		$menu_locations  = get_nav_menu_locations();
 		$theme_locations = $this->options->mslsmenu_theme_location ?? '';
 		$options         = [
-			sprintf( '<option value="" %s>%s</option>', $this->selected( '', $theme_locations ), __( '-- empty --', 'mslsmenu' ) )
+			sprintf( '<option value="" %s>%s</option>', $this->selected( '', $theme_locations ), esc_html__( '-- empty --', 'mslsmenu' ) )
 		];
 
 		foreach ( array_keys( $menu_locations ) as $value ) {

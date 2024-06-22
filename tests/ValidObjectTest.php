@@ -64,6 +64,8 @@ it( 'calls add_settings_field on $sut->add_settings()', function () {
 
 it( 'calls get_nav_menu_locations on $sut->theme_location()', function () {
 	Functions\expect( 'get_nav_menu_locations' )->once()->andReturn( [ 'test' => 1 ] );
+    Functions\expect( 'esc_attr' )->once()->andReturnFirstArg();
+    Functions\expect( 'esc_html__' )->once()->andReturnFirstArg();
 
 	$expected = '<select id="mslsmenu_theme_location" name="msls[mslsmenu_theme_location][]" multiple="multiple"><option value="" selected="selected">-- empty --</option><option value="test" selected="selected">test</option></select>';
 
