@@ -5,7 +5,7 @@ Plugin Name: MslsMenu
 Requires Plugins: multisite-language-switcher
 Plugin URI: https://github.com/lloc/MslsMenu
 Description: Adds the Multisite Language Switcher to the primary-nav-menu
-Version: 2.4.1
+Version: 2.5.0
 Author: Dennis Ploetner
 Author URI: http://lloc.de/
 Text Domain: mslsmenu
@@ -34,7 +34,7 @@ declare( strict_types=1 );
  * MslsMenu Class
  * @package mslsmenu
  */
-class MslsMenu {
+final class MslsMenu {
 
 	/**
 	 * @var string
@@ -75,6 +75,10 @@ class MslsMenu {
 		return $obj;
 	}
 
+	private function get_msls_output(): lloc\Msls\MslsOutput{
+		return function_exists( 'msls_output' ) ? msls_output() : lloc\Msls\MslsOutput::init();
+	}
+
 	/**
 	 * Callback for wp_nav_menu_items
 	 *
@@ -90,7 +94,7 @@ class MslsMenu {
 		if ( is_array( $menu_locations ) && in_array( $theme_location, $menu_locations ) ) {
 			$menu = '';
 
-			$obj = lloc\Msls\MslsOutput::init();
+			$obj = $this->get_msls_output();
 			foreach ( $obj->get( (int) $this->options->mslsmenu_display, false, (int) $this->options->only_with_translation ) as $item ) {
 				$menu .= $this->options->mslsmenu_before_item . $item . $this->options->mslsmenu_after_item;
 			}
