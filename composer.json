@@ -5,7 +5,7 @@
   "license": "GPL-2.0-or-later",
   "homepage": "https://it.wordpress.org/plugins/mslsmenu/",
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.4",
     "composer/installers": "~1.9.0"
   },
   "require-dev": {
@@ -21,7 +21,11 @@
   "scripts": {
     "test": "vendor/bin/pest",
     "coverage": "php -d xdebug.mode=coverage vendor/bin/pest --coverage",
-    "analyze": "vendor/bin/phpstan analyze"
+    "analyze": "vendor/bin/phpstan analyze",
+    "git-release": "bin/git-release.sh",
+    "build": [
+      "@git-release"
+    ]
   },
   "authors": [
     {
