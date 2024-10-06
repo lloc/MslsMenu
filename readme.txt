@@ -6,7 +6,7 @@ Tags: multilingual, multisite, language, switcher, menu
 Requires at least: 5.3
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,10 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 4. Output in the primary nav menu
 
 == Changelog ==
+
+= 2.5.1 =
+* plugin check integration added
+* missing license problem addressed
 
 = 2.5.0 =
 * WordPress 6.6 tested

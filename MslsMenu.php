@@ -8,7 +8,7 @@
  *
  * Plugin Name: MslsMenu
  * Requires Plugins: multisite-language-switcher
- * Version: 2.5.0
+ * Version: 2.5.1
  * Plugin URI: https://wordpress.org/plugins/mslsmenu/
  * Description: Adds the Multisite Language Switcher to the primary-nav-menu
  * Author: Dennis Ploetner
