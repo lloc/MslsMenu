@@ -1,6 +1,7 @@
 /.wordpress-org
 /.git
 /.github
+/mslsmenu
 /bin
 /reports
 /tests
@@ -11,6 +12,7 @@
 Changelog.md
 composer.json
 composer.lock
+mslsmenu.zip
 package.json
 package-lock.json
 phpdoc.xml
