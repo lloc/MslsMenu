@@ -1,6 +1,7 @@
 /.wordpress-org
 /.git
 /.github
+/.idea
 /mslsmenu
 /bin
 /reports
@@ -8,6 +9,7 @@
 .distignore
 .gitattributes
 .gitignore
+.phpunit.result.cache
 .scrutinizer.yml
 Changelog.md
 composer.json
