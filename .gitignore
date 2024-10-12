@@ -1,7 +1,8 @@
-composer.lock
 .phpunit.result.cache
 .idea/
 vendor/
 reports/
 mslsmenu/
+composer.lock
 mslsmenu.zip
+coverage.xml
