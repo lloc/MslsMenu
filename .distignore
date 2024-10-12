@@ -6,6 +6,7 @@
 /bin
 /reports
 /tests
+coverage.xml
 .distignore
 .gitattributes
 .gitignore
