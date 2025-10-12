@@ -7,7 +7,7 @@ PHP_CS_FIXER="vendor/bin/phpcbf"
 HAS_PHP_CS_FIXER=false
 
 # check if php-cs-fixer is installed as a composer dependency
-if [ -x $PHP_CS_FIXER ]; then
+if [ -x "$PHP_CS_FIXER" ]; then
   HAS_PHP_CS_FIXER=true
 fi
 
