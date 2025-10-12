@@ -13,13 +13,13 @@
     <arg name="cache" value=".phpcs.cache"/>
 
     <rule ref="WordPress">
-        <!-- PSR4 -->
         <exclude name="Generic.Commenting.DocComment.MissingShort" />
         <exclude name="Squiz.Commenting.FileComment.Missing" />
         <exclude name="Squiz.Commenting.ClassComment.Missing" />
         <exclude name="Squiz.Commenting.FunctionComment.Missing" />
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
         <exclude name="WordPress.Files.FileName" />
+        <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.Found" />
     </rule>
     <rule ref="WordPress-Extra"/>
     <rule ref="WordPress-Docs"/>
