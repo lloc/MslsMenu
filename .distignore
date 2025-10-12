@@ -12,13 +12,13 @@ coverage.xml
 .gitignore
 .phpunit.result.cache
 .scrutinizer.yml
-Changelog.md
-composer.json
 composer.lock
 mslsmenu.zip
 package.json
 package-lock.json
 phpdoc.xml
-phpstan.neon
+.phpstan.neon.dist
+.phpcs.cache
+.phpcs.xml.dist
 phpunit.xml
 README.md
