@@ -14,7 +14,7 @@ fi
 if $HAS_PHP_CS_FIXER; then
 
   # gets a list of all staged but not deleted php-files
-  CHANGED_FILES=$(git diff --cached --name-only --diff-filter=ACMRTUXB HEAD | grep .php)
+  CHANGED_FILES=$(git diff --cached --name-only --diff-filter=ACMRTUXB HEAD | grep '\.php$')
 
   if [ ! -z "${CHANGED_FILES}" ]; then
     # runs phpcbf on the changed files
