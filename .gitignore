@@ -1,6 +1,7 @@
 .DS_Store
 .phpunit.result.cache
 .idea/
+.phpcs.cache
 vendor/
 reports/
 mslsmenu/

@@ -10,10 +10,10 @@ coverage.xml
 .distignore
 .gitattributes
 .gitignore
+.phpcs.cache
 .phpunit.result.cache
 .scrutinizer.yml
 Changelog.md
-composer.json
 composer.lock
 mslsmenu.zip
 package.json
@@ -22,3 +22,4 @@ phpdoc.xml
 phpstan.neon
 phpunit.xml
 README.md
+AGENTS.md

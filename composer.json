@@ -24,6 +24,7 @@
     "analyze": "vendor/bin/phpstan analyze",
     "git-release": "bin/git-release.sh",
     "build": [
+      "@composer update --no-dev",
       "@git-release"
     ]
   },
