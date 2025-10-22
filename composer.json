@@ -13,8 +13,7 @@
     "brain/monkey": "2.*",
     "phpstan/phpstan": "^1.8",
     "szepeviktor/phpstan-wordpress": "^1.1",
-    "phpstan/extension-installer": "^1.1",
-    "wp-coding-standards/wpcs": "^3.0"
+    "phpstan/extension-installer": "^1.1"
   },
   "autoload-dev": {
       "files": [ "MslsMenu.php" ]
@@ -22,20 +21,11 @@
   "scripts": {
     "test": "vendor/bin/pest",
     "coverage": "php -d xdebug.mode=coverage vendor/bin/pest --coverage",
-    "phpstan": "vendor/bin/phpstan analyze",
+    "analyze": "vendor/bin/phpstan analyze",
     "git-release": "bin/git-release.sh",
+    "build": [
       "@composer update --no-dev",
       "@git-release"
-    ],
-    "githooks": [
-      "if [ -e bin/githooks/pre-commit ]; then cp bin/githooks/pre-commit ./.git/hooks/; fi",
-      "if [ -e .git/hooks/pre-commit ]; then chmod 0755 .git/hooks/pre-commit; fi"
-    ],
-    "post-install-cmd": [
-      "@githooks"
-    ],
-    "post-update-cmd": [
-      "@githooks"
     ]
   },
   "authors": [
@@ -56,8 +46,7 @@
     "allow-plugins": {
       "composer/installers": true,
       "phpstan/extension-installer": true,
-      "pestphp/pest-plugin": true,
-      "dealerdirect/phpcodesniffer-composer-installer": true
+      "pestphp/pest-plugin": true
     }
   }
 }
