@@ -19,7 +19,9 @@ mslsmenu.zip
 package.json
 package-lock.json
 phpdoc.xml
-phpstan.neon
+.phpstan.neon.dist
+.phpcs.cache
+.phpcs.xml.dist
 phpunit.xml
 README.md
 AGENTS.md
