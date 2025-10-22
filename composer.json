@@ -24,7 +24,7 @@
     "coverage": "php -d xdebug.mode=coverage vendor/bin/pest --coverage",
     "phpstan": "vendor/bin/phpstan analyze",
     "git-release": "bin/git-release.sh",
-    "build": [
+@composer install --no-dev --no-interaction --prefer-dist
       "@composer update --no-dev",
       "@git-release"
     ],
