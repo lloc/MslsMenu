@@ -34,6 +34,10 @@
 
 declare( strict_types=1 );
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * MslsMenu Class
  *
@@ -154,7 +158,7 @@ final class MslsMenu {
 	 *
 	 * @param array $args
 	 */
-	public function theme_location( array $args ) {
+	public function theme_location( array $args ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Signature is dictated by add_settings_field().
 		$menu_locations  = get_nav_menu_locations();
 		$theme_locations = $this->options->mslsmenu_theme_location ?? '';
 		$options         = array(

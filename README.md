@@ -15,8 +15,9 @@ MslsMenu extends the Multisite Language Switcher by injecting a language picker 
 - Configure Multisite Language Switcher as usual; MslsMenu reuses its site mappings automatically.
 
 ## Develop
-- `composer install` pulls dev tools (Pest, PHPStan, Brain Monkey).
-- `composer test` runs the Pest suite; `composer analyze` performs static analysis.
+- `composer install` pulls dev tools (Pest, PHPStan, PHP_CodeSniffer, Brain Monkey).
+- `composer qa` runs the full gate: coding standards, static analysis, then the Pest suite.
+- `composer pest`, `composer phpcs` and `composer phpstan` run the individual steps; `composer phpcbf` auto-fixes coding-standard violations.
 
 ## Contribute
 - Review `AGENTS.md` for project conventions and release steps.

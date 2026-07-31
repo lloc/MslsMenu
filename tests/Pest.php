@@ -5,7 +5,6 @@ class Options {
 	public static function instance() {
 		return new self();
 	}
-
 }
 
 class Admin {
@@ -17,10 +16,9 @@ class Admin {
 
 class Link {
 
-	public static function get_types_description()  {
-		return [];
+	public static function get_types_description() {
+		return array();
 	}
-
 }
 
 class Output {
@@ -30,7 +28,7 @@ class Output {
 	}
 
 	public function get( $display, $filter = false, $exists = false ) {
-		return [ 'de', 'en' ];
+		return array( 'de', 'en' );
 	}
 }
 

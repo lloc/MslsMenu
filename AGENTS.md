@@ -9,9 +9,11 @@
 
 ## Build, Test, and Development Commands
 - Run `composer install` after cloning to pull dev dependencies.
-- `composer test` executes the Pest suite with mocked WordPress APIs.
+- `composer qa` runs the full gate: `phpcs`, `phpstan`, then `pest`.
+- `composer pest` executes the Pest suite with mocked WordPress APIs.
+- `composer phpcs` checks the WordPress coding standards and PHP 7.4 compatibility via `.phpcs.xml.dist`; `composer phpcbf` fixes what can be fixed automatically.
 - `composer analyze` runs PHPStan (level 5) against `MslsMenu.php`; keep it passing before pushing.
-- `composer coverage` enables Xdebug coverage for pull request evidence.
+- `composer pest:coverage` enables Xdebug coverage for pull request evidence.
 - `composer build` triggers `bin/git-release.sh`, refreshing `mslsmenu/` and `mslsmenu.zip` for distribution.
 
 ## Coding Style & Naming Conventions
@@ -22,12 +24,13 @@
 ## Testing Guidelines
 - Place new specs in `tests/YourFeatureTest.php`; keep case names descriptive (`it('renders menu item')`).
 - Stub external WP functions with Brain Monkey setup blocks to keep tests deterministic.
-- Run `composer coverage` for behavioral changes and share the summary when coverage changes noticeably.
+- Run `composer pest:coverage` for behavioral changes and share the summary when coverage changes noticeably.
+- `MslsMenu.php` guards against direct access with `ABSPATH`; `tests/bootstrap.php` defines that constant and then loads the plugin, so the suite must keep using it as its PHPUnit bootstrap.
 
 ## Commit & Pull Request Guidelines
 - Write short imperative subjects (≈50 chars) such as `Clean menu walker output`; batch related edits together.
 - Reference GitHub issues in the body (`Refs #123`) and list the commands you ran.
-- PRs should explain the problem, outline the fix, attach UI evidence when relevant, and confirm `composer test` plus `composer analyze`.
+- PRs should explain the problem, outline the fix, attach UI evidence when relevant, and confirm `composer qa` passes.
 
 ## Release Packaging Tips
 - Bump the plugin header version in `MslsMenu.php` and sync the same value into `readme.txt` before building.

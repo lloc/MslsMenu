@@ -10,18 +10,27 @@
   },
   "require-dev": {
     "pestphp/pest": "^1.22",
-    "brain/monkey": "2.*",
-    "phpstan/phpstan": "^1.8",
-    "szepeviktor/phpstan-wordpress": "^1.1",
-    "phpstan/extension-installer": "^1.1",
+    "brain/monkey": "^2.7.0",
+    "phpstan/phpstan": "^2.2.0",
+    "phpstan/extension-installer": "^1.4",
+    "szepeviktor/phpstan-wordpress": "^2.0.0",
+    "squizlabs/php_codesniffer": "^3.9",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "wp-coding-standards/wpcs": "^3.1",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
     "lloc/composer-i18n-scripts": "^1.0"
   },
-  "autoload-dev": {
-      "files": [ "MslsMenu.php" ]
-  },
   "scripts": {
-    "test": "vendor/bin/pest",
-    "coverage": "php -d xdebug.mode=coverage vendor/bin/pest --coverage",
+    "phpcs": "phpcs",
+    "phpcbf": "phpcbf",
+    "phpstan": "vendor/bin/phpstan analyze --memory-limit=2G",
+    "pest": "vendor/bin/pest",
+    "qa": [
+      "@phpcs",
+      "@phpstan",
+      "@pest"
+    ],
+    "pest:coverage": "php -d xdebug.mode=coverage vendor/bin/pest --coverage",
     "analyze": "vendor/bin/phpstan analyze",
     "git-release": "bin/git-release.sh",
     "build": [
@@ -47,6 +56,7 @@
     "allow-plugins": {
       "composer/installers": true,
       "phpstan/extension-installer": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
       "pestphp/pest-plugin": true,
       "lloc/composer-i18n-scripts": true
     }
