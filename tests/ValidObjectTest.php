@@ -21,7 +21,7 @@ beforeAll(
 
 beforeEach(
 	function () {
-		$options                          = \Mockery::mock( 'lloc\Msls\MslsOptions' );
+		$options                          = \Mockery::mock( 'lloc\Msls\Options\Options' );
 		$options->mslsmenu_theme_location = array( 'test' );
 
 		$this->sut = \MslsMenu::init( $options );
@@ -69,8 +69,8 @@ it(
 	function () {
 		$expected = '';
 
-		$args                  = new \stdClass();
-		$args->theme_locations = 'test';
+		$args                 = new \stdClass();
+		$args->theme_location = 'other';
 
 		$result = $this->sut->nav_item( '', $args );
 
@@ -121,5 +121,28 @@ it(
 		$this->sut->input( array() );
 
 		$this->expectOutputString( $expected );
+	}
+);
+
+it(
+	'appends the switcher on $sut->nav_item() when the theme location matches',
+	function () {
+		Functions\when( 'msls_output' )->justReturn( new \Output() );
+
+		$options                          = \Mockery::mock( 'lloc\Msls\Options\Options' );
+		$options->mslsmenu_theme_location = array( 'primary' );
+		$options->mslsmenu_display        = 0;
+		$options->only_with_translation   = false;
+		$options->mslsmenu_before_output  = '<ul>';
+		$options->mslsmenu_after_output   = '</ul>';
+		$options->mslsmenu_before_item    = '<li>';
+		$options->mslsmenu_after_item     = '</li>';
+
+		$sut = \MslsMenu::init( $options );
+
+		$args                 = new \stdClass();
+		$args->theme_location = 'primary';
+
+		expect( $sut->nav_item( '', $args ) )->toEqual( '<ul><li>de</li><li>en</li></ul>' );
 	}
 );

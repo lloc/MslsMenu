@@ -2,5 +2,7 @@ parameters:
     level: 5
     paths:
         - MslsMenu.php
+    scanDirectories:
+        - vendor/lloc/multisite-language-switcher/includes
     bootstrapFiles:
-        - tests/Pest.php
+        - tests/phpstan-bootstrap.php

@@ -6,7 +6,7 @@ Tags: multilingual, multisite, language, switcher, menu
 Requires at least: 6.1
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,10 +35,11 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 
 == Changelog ==
 
-= 3.0.0 =
-* Changed: version aligned with Multisite Language Switcher 3.0 - this is the add-on release for the new MSLS major version.
+= 3.0.1 =
+* Changed: the version number now matches Multisite Language Switcher 3.0.1 - this is the add-on release for the new MSLS major version.
 * Changed: requires WordPress 6.1 or newer, tested up to 7.1.
-* Internal: the release is deployed from the built distribution, the same artifact Plugin Check verifies. Build-only dependencies are no longer shipped.
+* Changed: requires Multisite Language Switcher 3.0 or newer. MslsMenu now calls the namespaced MSLS classes instead of the pre-3.0 compatibility aliases. With an older MSLS it stays inactive instead of raising an error.
+* Internal: the release is deployed from the built distribution, the same artifact Plugin Check verifies. Build-only dependencies are no longer shipped. Static analysis now runs against the real MSLS classes instead of test stubs.
 
 = 2.5.1 =
 * plugin check integration added
@@ -90,5 +91,5 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 
 == Upgrade Notice ==
 
-= 3.0.0 =
-Version alignment with Multisite Language Switcher 3.0. Requires WordPress 6.1 or newer.
+= 3.0.1 =
+Version alignment with Multisite Language Switcher 3.0.1. Requires MSLS 3.0 or newer and WordPress 6.1 or newer.

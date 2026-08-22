@@ -9,7 +9,7 @@
  *
  * Plugin Name: MslsMenu
  * Requires Plugins: multisite-language-switcher
- * Version: 3.0.0
+ * Version: 3.0.1
  * Plugin URI: https://wordpress.org/plugins/mslsmenu/
  * Description: Adds the Multisite Language Switcher to the primary-nav-menu
  * Author: Dennis Ploetner
@@ -82,8 +82,8 @@ final class MslsMenu {
 		return $obj;
 	}
 
-	private function get_msls_output(): lloc\Msls\MslsOutput {
-		return function_exists( 'msls_output' ) ? msls_output() : lloc\Msls\MslsOutput::init();
+	private function get_msls_output(): lloc\Msls\Frontend\Output {
+		return msls_output();
 	}
 
 	/**
@@ -102,7 +102,7 @@ final class MslsMenu {
 			$menu = '';
 
 			$obj = $this->get_msls_output();
-			foreach ( $obj->get( (int) $this->options->mslsmenu_display, false, (int) $this->options->only_with_translation ) as $item ) {
+			foreach ( $obj->get( (int) $this->options->mslsmenu_display, false, (bool) $this->options->only_with_translation ) as $item ) {
 				$menu .= $this->options->mslsmenu_before_item . $item . $this->options->mslsmenu_after_item;
 			}
 
@@ -129,15 +129,13 @@ final class MslsMenu {
 	 * Callback for add_settings_section in admin_register
 	 */
 	public function add_settings(): void {
-		$args = array( 'msls_admin' => lloc\Msls\MslsAdmin::init() );
-
 		$label    = __( 'Theme Location', 'mslsmenu' );
 		$callback = array( $this, 'theme_location' );
-		add_settings_field( 'mslsmenu_theme_location', $label, $callback, $this->page, self::SID, $args );
+		add_settings_field( 'mslsmenu_theme_location', $label, $callback, $this->page, self::SID );
 
 		$label    = __( 'Display', 'mslsmenu' );
 		$callback = array( $this, 'display' );
-		add_settings_field( 'mslsmenu_display', $label, $callback, $this->page, self::SID, $args );
+		add_settings_field( 'mslsmenu_display', $label, $callback, $this->page, self::SID );
 
 		$fields = array(
 			'mslsmenu_before_output' => __( 'Text/HTML before the list', 'mslsmenu' ),
@@ -148,7 +146,7 @@ final class MslsMenu {
 
 		$callback = array( $this, 'input' );
 		foreach ( $fields as $id => $label ) {
-			$args['mslsmenu_input'] = $id;
+			$args = array( 'mslsmenu_input' => $id );
 			add_settings_field( $id, $label, $callback, $this->page, self::SID, $args );
 		}
 	}
@@ -188,22 +186,9 @@ final class MslsMenu {
 	 *
 	 * @param array $args
 	 */
-	public function display( array $args ) {
-		$types   = lloc\Msls\MslsLink::get_types_description();
+	public function display( array $args ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Signature is dictated by add_settings_field().
+		$types   = lloc\Msls\Link\Link::get_types_description();
 		$display = $this->options->mslsmenu_display ?? '0';
-
-		/**
-		 * Backward compatibility
-		 */
-		if ( ! class_exists( lloc\Msls\Component\Input\Select::class ) ) {
-			// @codeCoverageIgnoreStart
-
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo $args['msls_admin']->render_select( 'mslsmenu_display', $types, $display );
-
-			return;
-			// @codeCoverageIgnoreEnd
-		}
 
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo ( new lloc\Msls\Component\Input\Select( 'mslsmenu_display', $types, $display ) )->render();
@@ -215,19 +200,6 @@ final class MslsMenu {
 	 * @param array $args
 	 */
 	public function input( array $args ) {
-		/**
-		 * Backward compatibility
-		 */
-		if ( ! class_exists( 'lloc\Msls\Component\Input\Text' ) ) {
-			// @codeCoverageIgnoreStart
-
-            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo $args['msls_admin']->render_input( $args['mslsmenu_input'] );
-
-			return;
-			// @codeCoverageIgnoreEnd
-		}
-
 		$key   = $args['mslsmenu_input'] ?? '';
 		$value = $this->options->$key ?? '';
 
@@ -241,7 +213,9 @@ if ( function_exists( 'add_action' ) ) {
 	add_action(
 		'plugins_loaded',
 		function () {
-			$options = class_exists( lloc\Msls\MslsOptions::class ) ? lloc\Msls\MslsOptions::instance() : null;
+			// The namespaced class only exists from MSLS 3.0 on. Against an older MSLS the
+			// null object keeps every hook unregistered instead of fataling on a missing type.
+			$options = class_exists( lloc\Msls\Options\Options::class ) ? msls_options() : null;
 			MslsMenu::init( $options );
 		}
 	);

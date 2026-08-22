@@ -18,7 +18,8 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
     "wp-coding-standards/wpcs": "^3.1",
     "phpcompatibility/phpcompatibility-wp": "^2.1",
-    "lloc/composer-i18n-scripts": "^1.0"
+    "lloc/composer-i18n-scripts": "^1.0",
+    "lloc/multisite-language-switcher": "^3.0"
   },
   "scripts": {
     "phpcs": "phpcs",
@@ -59,6 +60,13 @@
       "dealerdirect/phpcodesniffer-composer-installer": true,
       "pestphp/pest-plugin": true,
       "lloc/composer-i18n-scripts": true
+    }
+  },
+  "extra": {
+    "installer-paths": {
+      "vendor/{$vendor}/{$name}/": [
+        "type:wordpress-plugin"
+      ]
     }
   }
 }
