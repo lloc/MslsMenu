@@ -27,9 +27,13 @@ jobs:
         run: |
           BUILD_DIR=mslsmenu
           test -d "$BUILD_DIR" || { echo "::error::$BUILD_DIR was not created by composer build"; exit 1; }
-          for required in MslsMenu.php readme.txt LICENSE languages/default.pot; do
+          for required in MslsMenu.php readme.txt LICENSE; do
             test -e "$BUILD_DIR/$required" || { echo "::error::$BUILD_DIR/$required is missing"; exit 1; }
           done
+          # Check the translations by shape, not by file name - the .pot was called
+          # default.pot before it was regenerated as mslsmenu.pot.
+          test "$(find "$BUILD_DIR/languages" -name '*.mo' | wc -l)" -gt 0 \
+            || { echo "::error::$BUILD_DIR/languages holds no .mo files"; exit 1; }
           # vendor/ only ever held composer/installers, a build-time composer plugin.
           # MslsMenu.php never loads vendor/autoload.php, so nothing of it may be shipped.
           for forbidden in vendor .git .github bin tests composer.lock phpunit.xml README.md AGENTS.md mslsmenu mslsmenu.zip; do
