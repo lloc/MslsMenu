@@ -12,7 +12,7 @@
 - `composer qa` runs the full gate: `phpcs`, `phpstan`, then `pest`.
 - `composer pest` executes the Pest suite with mocked WordPress APIs.
 - `composer phpcs` checks the WordPress coding standards and PHP 7.4 compatibility via `.phpcs.xml.dist`; `composer phpcbf` fixes what can be fixed automatically.
-- `composer analyze` runs PHPStan (level 5) against `MslsMenu.php`; keep it passing before pushing.
+- `composer analyze` runs PHPStan (level 5) against `MslsMenu.php`; keep it passing before pushing. It analyses against the real Multisite Language Switcher, pulled in as a dev dependency and bootstrapped in `tests/phpstan-bootstrap.php` — the stubs in `tests/Pest.php` keep the unit tests WordPress-free but do not reflect the MSLS API.
 - `composer pest:coverage` enables Xdebug coverage for pull request evidence.
 - `composer build` runs `composer update --no-dev` and then `bin/git-release.sh`, recreating `mslsmenu/` and `mslsmenu.zip`. It strips your local dev dependencies — run `composer install` afterwards to get the tooling back.
 
@@ -35,4 +35,4 @@
 ## Release Packaging Tips
 - Bump the plugin header version in `MslsMenu.php` and the `Stable tag` in `readme.txt` to the same value, and add the matching `= x.y.z =` entry to the `readme.txt` changelog. WordPress.org rejects the release if header and stable tag disagree.
 - Run `composer build` locally only to inspect the result. The shipped artifact is built in CI: `.github/workflows/deploy.yml` runs the same `composer build`, verifies the contents and deploys them through `BUILD_DIR: mslsmenu`.
-- Tag without a `v` prefix (`3.0.0`) and push the tag — that push is what triggers the deploy workflow.
+- Tag without a `v` prefix (`3.0.1`) and push the tag — that push is what triggers the deploy workflow.

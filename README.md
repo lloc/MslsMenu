@@ -5,7 +5,7 @@ MslsMenu
 
 MslsMenu extends the Multisite Language Switcher by appending its language links to the navigation menus of your choice. Use it when you want the switcher inside a nav menu without editing your theme or writing a custom walker.
 
-Multisite Language Switcher has to be installed and active first — MslsMenu is an add-on and declares that through its `Requires Plugins` header.
+Multisite Language Switcher **3.0 or newer** has to be installed and active first — MslsMenu is an add-on and declares that through its `Requires Plugins` header. That header carries no version constraint, so against an older MSLS the plugin stays inactive rather than raising an error.
 
 ## Install
 - From WordPress: search for “MslsMenu” under Plugins → Add New and activate it.
