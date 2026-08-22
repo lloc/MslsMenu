@@ -2,58 +2,83 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MslsMenu 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/multisite-language-switcher\n"
-"POT-Creation-Date: 2015-05-04 17:04+0100\n"
-"PO-Revision-Date: 2015-05-04 17:06+0100\n"
 "Last-Translator: Dennis Ploetner <dennis.ploetner@drivek.it>\n"
 "Language-Team: Dennis Ploetner <re@lloc.de>\n"
-"Language: German (de_DE)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2015-05-04 17:04+0100\n"
+"PO-Revision-Date: 2015-05-04 17:06+0100\n"
+"Language: German (de_DE)\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
-"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-# @ msls
-#: ../MslsMenu.php:90
+#: MslsMenu.php:121
+#: mslsmenu/MslsMenu.php:121
 msgid "Menu Settings"
 msgstr "Menü-Einstellungen"
 
-#: ../MslsMenu.php:95
+#: MslsMenu.php:134
+#: mslsmenu/MslsMenu.php:134
 msgid "Theme Location"
 msgstr ""
 
-# @ msls
-#: ../MslsMenu.php:98
+#: MslsMenu.php:138
+#: mslsmenu/MslsMenu.php:138
 msgid "Display"
 msgstr "Anzeige"
 
-# @ msls
-#: ../MslsMenu.php:102
+#: MslsMenu.php:143
+#: mslsmenu/MslsMenu.php:143
 msgid "Text/HTML before the list"
 msgstr "Text/HTML vor der Liste"
 
-# @ msls
-#: ../MslsMenu.php:103
+#: MslsMenu.php:144
+#: mslsmenu/MslsMenu.php:144
 msgid "Text/HTML after the list"
 msgstr "Text/HTML nach der Liste"
 
-# @ msls
-#: ../MslsMenu.php:104
+#: MslsMenu.php:145
+#: mslsmenu/MslsMenu.php:145
 msgid "Text/HTML before each item"
 msgstr "Text/HTML vor jedem Element"
 
-# @ msls
-#: ../MslsMenu.php:105
+#: MslsMenu.php:146
+#: mslsmenu/MslsMenu.php:146
 msgid "Text/HTML after each item"
 msgstr "Text/HTML nach jedem Element"
 
-#: ../MslsMenu.php:131
+#: MslsMenu.php:165
+#: mslsmenu/MslsMenu.php:165
 msgid "-- empty --"
 msgstr "-- leer --"
+
+#. Plugin Name of the plugin
+#: MslsMenu.php
+msgid "MslsMenu"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: MslsMenu.php
+msgid "https://wordpress.org/plugins/mslsmenu/"
+msgstr ""
+
+#. Description of the plugin
+#: MslsMenu.php
+msgid "Adds the Multisite Language Switcher to the primary-nav-menu"
+msgstr ""
+
+#. Author of the plugin
+#: MslsMenu.php
+msgid "Dennis Ploetner"
+msgstr ""
+
+#. Author URI of the plugin
+#: MslsMenu.php
+msgid "http://lloc.de/"
+msgstr ""

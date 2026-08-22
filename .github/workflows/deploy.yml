@@ -7,12 +7,49 @@ jobs:
   tag:
     name: New tag
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      attestations: write
+    timeout-minutes: 70
     steps:
       - name: Checkout project
-        uses: actions/checkout@v1
+        uses: actions/checkout@v7
+      - name: Composer dependencies
+        run: composer install --no-dev --no-interaction --optimize-autoloader
+      - name: Composer build
+        run: composer run-script build
+      # "composer build" leaves the ready-to-ship distribution in ./mslsmenu
+      # (bin/git-release.sh rsyncs the repository through .distignore). This is the very
+      # same directory that plugin-check.yml validates, so what WordPress.org receives is
+      # what Plugin Check has seen.
+      - name: Verify the build directory
+        run: |
+          BUILD_DIR=mslsmenu
+          test -d "$BUILD_DIR" || { echo "::error::$BUILD_DIR was not created by composer build"; exit 1; }
+          for required in MslsMenu.php readme.txt LICENSE languages/default.pot; do
+            test -e "$BUILD_DIR/$required" || { echo "::error::$BUILD_DIR/$required is missing"; exit 1; }
+          done
+          # vendor/ only ever held composer/installers, a build-time composer plugin.
+          # MslsMenu.php never loads vendor/autoload.php, so nothing of it may be shipped.
+          for forbidden in vendor .git .github bin tests composer.lock phpunit.xml README.md AGENTS.md mslsmenu mslsmenu.zip; do
+            test ! -e "$BUILD_DIR/$forbidden" || { echo "::error::$BUILD_DIR/$forbidden must not be shipped"; exit 1; }
+          done
+          echo "Build directory holds $(find "$BUILD_DIR" -type f | wc -l) files."
       - name: WordPress Plugin Deploy
-        uses: 10up/action-wordpress-plugin-deploy@master
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        id: deploy
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SLUG: mslsmenu
+          # Deploy only the built distribution. Without this the action falls back to
+          # rsyncing the whole workspace through .distignore - a different artifact than
+          # the one Plugin Check verifies, and the reason the MSLS 3.0.0 release broke.
+          BUILD_DIR: mslsmenu
+        with:
+          generate-zip: true
+      - name: Attest build provenance
+        uses: johnbillion/action-wordpress-plugin-attestation@0.7.3
+        with:
+          zip-path: ${{ steps.deploy.outputs.zip-path }}
