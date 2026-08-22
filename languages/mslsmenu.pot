@@ -1,0 +1,80 @@
+# Copyright (C) 2026 Dennis Ploetner
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: MslsMenu 3.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/MslsMenu\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-08-22T14:16:27+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: mslsmenu\n"
+
+#. Plugin Name of the plugin
+#: MslsMenu.php
+msgid "MslsMenu"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: MslsMenu.php
+msgid "https://wordpress.org/plugins/mslsmenu/"
+msgstr ""
+
+#. Description of the plugin
+#: MslsMenu.php
+msgid "Adds the Multisite Language Switcher to the primary-nav-menu"
+msgstr ""
+
+#. Author of the plugin
+#: MslsMenu.php
+msgid "Dennis Ploetner"
+msgstr ""
+
+#. Author URI of the plugin
+#: MslsMenu.php
+msgid "http://lloc.de/"
+msgstr ""
+
+#: MslsMenu.php:121
+#: mslsmenu/MslsMenu.php:121
+msgid "Menu Settings"
+msgstr ""
+
+#: MslsMenu.php:134
+#: mslsmenu/MslsMenu.php:134
+msgid "Theme Location"
+msgstr ""
+
+#: MslsMenu.php:138
+#: mslsmenu/MslsMenu.php:138
+msgid "Display"
+msgstr ""
+
+#: MslsMenu.php:143
+#: mslsmenu/MslsMenu.php:143
+msgid "Text/HTML before the list"
+msgstr ""
+
+#: MslsMenu.php:144
+#: mslsmenu/MslsMenu.php:144
+msgid "Text/HTML after the list"
+msgstr ""
+
+#: MslsMenu.php:145
+#: mslsmenu/MslsMenu.php:145
+msgid "Text/HTML before each item"
+msgstr ""
+
+#: MslsMenu.php:146
+#: mslsmenu/MslsMenu.php:146
+msgid "Text/HTML after each item"
+msgstr ""
+
+#: MslsMenu.php:165
+#: mslsmenu/MslsMenu.php:165
+msgid "-- empty --"
+msgstr ""

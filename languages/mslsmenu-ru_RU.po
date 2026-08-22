@@ -2,79 +2,84 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MslsMenu 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/multisite-language-switcher\n"
-"POT-Creation-Date: 2015-05-04 17:06+0100\n"
-"PO-Revision-Date: 2015-05-04 17:06+0100\n"
 "Last-Translator: Dennis Ploetner <dennis.ploetner@drivek.it>\n"
 "Language-Team: andreyv <jujav4ik@gmail.com>\n"
-"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2015-05-04 17:06+0100\n"
+"PO-Revision-Date: 2015-05-04 17:06+0100\n"
+"Language: ru_RU\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Textdomain-Support: yes\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-# @ msls
-#: ../MslsMenu.php:90
+#: MslsMenu.php:121
+#: mslsmenu/MslsMenu.php:121
 msgid "Menu Settings"
 msgstr ""
 
-#: ../MslsMenu.php:95
+#: MslsMenu.php:134
+#: mslsmenu/MslsMenu.php:134
 msgid "Theme Location"
 msgstr ""
 
-# @ msls
-#: ../MslsMenu.php:98
+#: MslsMenu.php:138
+#: mslsmenu/MslsMenu.php:138
 msgid "Display"
 msgstr "Показать"
 
-# @ msls
-#: ../MslsMenu.php:102
+#: MslsMenu.php:143
+#: mslsmenu/MslsMenu.php:143
 msgid "Text/HTML before the list"
 msgstr "Текст/HTML перед элементом списка"
 
-# @ msls
-#: ../MslsMenu.php:103
+#: MslsMenu.php:144
+#: mslsmenu/MslsMenu.php:144
 msgid "Text/HTML after the list"
 msgstr "Текст/HTML после элемента списка"
 
-# @ msls
-#: ../MslsMenu.php:104
+#: MslsMenu.php:145
+#: mslsmenu/MslsMenu.php:145
 msgid "Text/HTML before each item"
 msgstr "Текст/HTML перед элементом"
 
-# @ msls
-#: ../MslsMenu.php:105
+#: MslsMenu.php:146
+#: mslsmenu/MslsMenu.php:146
 msgid "Text/HTML after each item"
 msgstr "Текст/HTML после элемента"
 
-#: ../MslsMenu.php:131
+#: MslsMenu.php:165
+#: mslsmenu/MslsMenu.php:165
 msgid "-- empty --"
 msgstr ""
 
-# @ msls
-#~ msgid "This post is also available in %s."
-#~ msgstr "Эта статья также доступна на %s"
+#. Plugin Name of the plugin
+#: MslsMenu.php
+msgid "MslsMenu"
+msgstr ""
 
-# @ msls
-#~ msgid "%s and %s"
-#~ msgstr "%s и %s"
+#. Plugin URI of the plugin
+#: MslsMenu.php
+msgid "https://wordpress.org/plugins/mslsmenu/"
+msgstr ""
 
-# @ msls
-#~ msgid "Multisite Language Switcher Options"
-#~ msgstr "Multisite Language Switcher Настройки"
+#. Description of the plugin
+#: MslsMenu.php
+msgid "Adds the Multisite Language Switcher to the primary-nav-menu"
+msgstr ""
 
-# @ msls
-#~ msgid "Update"
-#~ msgstr "Обновить"
+#. Author of the plugin
+#: MslsMenu.php
+msgid "Dennis Ploetner"
+msgstr ""
 
-# @ msls
-#, fuzzy
-#~ msgid "Language Settings"
-#~ msgstr "Главные настройки"
+#. Author URI of the plugin
+#: MslsMenu.php
+msgid "http://lloc.de/"
+msgstr ""

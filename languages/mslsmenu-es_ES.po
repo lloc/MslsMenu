@@ -1,143 +1,84 @@
-# Copyright (C) 2012 
-# This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version: MslsMenu 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/multisite-language-switcher\n"
-"POT-Creation-Date: 2015-05-04 17:07+0100\n"
-"PO-Revision-Date: 2015-05-04 17:07+0100\n"
 "Last-Translator: Dennis Ploetner <dennis.ploetner@drivek.it>\n"
 "Language-Team: Andreas Breitschopp <a-breitschopp@ab-tools.com>\n"
-"Language: Spanish (es_ES)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2015-05-04 17:07+0100\n"
+"PO-Revision-Date: 2015-05-04 17:07+0100\n"
+"Language: Spanish (es_ES)\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
-"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../MslsMenu.php:90
+#: MslsMenu.php:121
+#: mslsmenu/MslsMenu.php:121
 msgid "Menu Settings"
 msgstr ""
 
-#: ../MslsMenu.php:95
+#: MslsMenu.php:134
+#: mslsmenu/MslsMenu.php:134
 msgid "Theme Location"
 msgstr ""
 
-#: ../MslsMenu.php:98
+#: MslsMenu.php:138
+#: mslsmenu/MslsMenu.php:138
 msgid "Display"
 msgstr "Aspecto"
 
-#: ../MslsMenu.php:102
+#: MslsMenu.php:143
+#: mslsmenu/MslsMenu.php:143
 msgid "Text/HTML before the list"
 msgstr "Texto/HTML antes de la lista"
 
-#: ../MslsMenu.php:103
+#: MslsMenu.php:144
+#: mslsmenu/MslsMenu.php:144
 msgid "Text/HTML after the list"
 msgstr "Texto/HTML después de la lista"
 
-#: ../MslsMenu.php:104
+#: MslsMenu.php:145
+#: mslsmenu/MslsMenu.php:145
 msgid "Text/HTML before each item"
 msgstr "Texto/HTML antes de cada ítem"
 
-#: ../MslsMenu.php:105
+#: MslsMenu.php:146
+#: mslsmenu/MslsMenu.php:146
 msgid "Text/HTML after each item"
 msgstr "Texto/HTML después de cada ítem"
 
-#: ../MslsMenu.php:131
+#: MslsMenu.php:165
+#: mslsmenu/MslsMenu.php:165
 msgid "-- empty --"
 msgstr ""
 
-#~ msgid "This post is also available in %s."
-#~ msgstr "Esta entrada está también disponible en %s."
+#. Plugin Name of the plugin
+#: MslsMenu.php
+msgid "MslsMenu"
+msgstr ""
 
-#~ msgid "%s and %s"
-#~ msgstr "%s y %s"
+#. Plugin URI of the plugin
+#: MslsMenu.php
+msgid "https://wordpress.org/plugins/mslsmenu/"
+msgstr ""
 
-#~ msgid "Multisite Language Switcher"
-#~ msgstr "Multisite Language Switcher"
+#. Description of the plugin
+#: MslsMenu.php
+msgid "Adds the Multisite Language Switcher to the primary-nav-menu"
+msgstr ""
 
-#~ msgid ""
-#~ "Multisite Language Switcher is almost ready. You must <a href=\"%s"
-#~ "\">complete the configuration process</a>."
-#~ msgstr ""
-#~ "Multisite Language Switcher está casi listo. Tienes que <a href=\"%s"
-#~ "\">completar aquí el proceso de configuración</a>."
+#. Author of the plugin
+#: MslsMenu.php
+msgid "Dennis Ploetner"
+msgstr ""
 
-#~ msgid "Multisite Language Switcher Options"
-#~ msgstr "Opciones de Multisite Language Switcher"
-
-#~ msgid ""
-#~ "To achieve maximum flexibility, you have to configure each blog "
-#~ "separately."
-#~ msgstr ""
-#~ "Para lograr máxima flexibilidad, tienes que configurar cada sitio por "
-#~ "separado."
-
-#~ msgid "Configure"
-#~ msgstr "Configurar"
-
-#~ msgid "Update"
-#~ msgstr "Actualizar"
-
-#, fuzzy
-#~ msgid "Language Settings"
-#~ msgstr "Opciones principales"
-
-#~ msgid "Sort output by description"
-#~ msgstr "Ordenar salida por descripción"
-
-#~ msgid "Display link to the current language"
-#~ msgstr "Mostrar el enlace del idioma actual"
-
-#~ msgid "Show only links with a translation"
-#~ msgstr "Sólo mostrar los enlaces traducidos"
-
-#~ msgid "Description"
-#~ msgstr "Descripción"
-
-#~ msgid "Add hint for available translations"
-#~ msgstr "Añadir sugerencia para cada traducción"
-
-#~ msgid "Hint priority"
-#~ msgstr "Prioridad de la sugerencia"
-
-#~ msgid "Custom URL for flag-images"
-#~ msgstr "URL personalizada para las imágenes de las banderas"
-
-#~ msgid "Exclude this blog from output"
-#~ msgstr "Excluir este sitio de la salida"
-
-#~ msgid "Edit the translation in the %s-blog"
-#~ msgstr "Editar la traducción en en el sitio %s"
-
-#~ msgid "Create a new translation in the %s-blog"
-#~ msgstr "Crear una nueva traducción en el sitio %s"
-
-#~ msgid "Flag and description"
-#~ msgstr "Bandera y descripción"
-
-#~ msgid "Flag only"
-#~ msgstr "Sólo bandera"
-
-#~ msgid "Description and flag"
-#~ msgstr "Descripción y bandera"
-
-#~ msgid "Description only"
-#~ msgstr "Sólo descripción"
-
-#~ msgid ""
-#~ "You should define at least another blog in a different language in order "
-#~ "to have some benefit from this plugin!"
-#~ msgstr ""
-#~ "¡Debes especificar al menos otro blog en otro idioma para sacarle "
-#~ "provecho a este plugin!"
-
-#~ msgid "Title"
-#~ msgstr "Título"
+#. Author URI of the plugin
+#: MslsMenu.php
+msgid "http://lloc.de/"
+msgstr ""
