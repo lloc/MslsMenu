@@ -36,54 +36,28 @@ But this can lead to fatal errors if you don't know much about PHP, or maybe the
 == Changelog ==
 
 = 3.0.2 =
-* Fixed: 3.0.1 was published with the code of 3.0.0 because the release tag pointed at the wrong commit. This release ships what 3.0.1 was meant to contain.
-* Changed: the version number now matches Multisite Language Switcher 3.0.1 - this is the add-on release for the new MSLS major version.
-* Changed: requires WordPress 6.1 or newer, tested up to 7.1.
-* Changed: requires Multisite Language Switcher 3.0 or newer. MslsMenu now calls the namespaced MSLS classes instead of the pre-3.0 compatibility aliases. With an older MSLS it stays inactive instead of raising an error.
-* Internal: the release is deployed from the built distribution, the same artifact Plugin Check verifies. Build-only dependencies are no longer shipped. Static analysis now runs against the real MSLS classes instead of test stubs.
+* An admin notice explains why MslsMenu is doing nothing when Multisite Language Switcher is older than 3.0.
+* The release is built and checked in CI, deployed from the same distribution Plugin Check verifies, and published with a build provenance attestation.
+* The translation files were regenerated.
 
 = 2.5.1 =
 * plugin check integration added
 * missing license problem addressed
-
-= 2.5.0 =
-* WordPress 6.6 tested
 * MslsOutput class deprecated init in favour of a function
 
 = 2.4.1 =
 * readme.txt tags updated
 * Plugin check issues fixed
-
-= 2.4.0 =
-* WordPress 6.5 tested
 * "Requires Plugins" added
 
 = 2.3.2 =
-* WordPress 6.3 tested
-
-= 2.3.1 =
-* WordPress 6.2.2 tested
 * Pest as new dev/tester dependency
 
 = 2.2.6 =
 * Unit testing completed
-* WordPress 6.1 tested
-
-= 2.2.5 =
 * phpstan config excluded
-* WordPress 5.8 tested
-
-= 2.2.4 =
 * Pest for Unit tests added
-
-= 2.2.3 =
 * PHP 7.1 as minimum declared
-
-= 2.2 =
-* compatibility con MSLS 2.4
-
-= 2.0 =
-* compatibility con MSLS 2.0
 
 = 1.0 =
 * marked as stable
