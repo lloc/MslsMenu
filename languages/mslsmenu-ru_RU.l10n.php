@@ -4,7 +4,7 @@ return array(
 	'plural-forms'       => 'nplurals=2; plural=n != 1;',
 	'language'           => 'ru_RU',
 	'project-id-version' => 'MslsMenu 3.0.2',
-	'pot-creation-date'  => '2026-08-23T08:46:44+00:00',
+	'pot-creation-date'  => '2026-08-23T08:54:39+00:00',
 	'po-revision-date'   => '2015-05-04 17:06+0100',
 	'x-generator'        => 'Poedit 1.5.4',
 	'messages'           => array(

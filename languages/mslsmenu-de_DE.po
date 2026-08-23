@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-23T08:46:44+00:00\n"
+"POT-Creation-Date: 2026-08-23T08:54:39+00:00\n"
 "PO-Revision-Date: 2015-05-04 17:06+0100\n"
 "Language: German (de_DE)\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -18,35 +18,35 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: MslsMenu.php:121
+#: MslsMenu.php:117
 msgid "Menu Settings"
 msgstr "Menü-Einstellungen"
 
-#: MslsMenu.php:132
+#: MslsMenu.php:128
 msgid "Theme Location"
 msgstr "Position im Theme"
 
-#: MslsMenu.php:136
+#: MslsMenu.php:132
 msgid "Display"
 msgstr "Anzeige"
 
-#: MslsMenu.php:141
+#: MslsMenu.php:137
 msgid "Text/HTML before the list"
 msgstr "Text/HTML vor der Liste"
 
-#: MslsMenu.php:142
+#: MslsMenu.php:138
 msgid "Text/HTML after the list"
 msgstr "Text/HTML nach der Liste"
 
-#: MslsMenu.php:143
+#: MslsMenu.php:139
 msgid "Text/HTML before each item"
 msgstr "Text/HTML vor jedem Element"
 
-#: MslsMenu.php:144
+#: MslsMenu.php:140
 msgid "Text/HTML after each item"
 msgstr "Text/HTML nach jedem Element"
 
-#: MslsMenu.php:163
+#: MslsMenu.php:159
 msgid "-- empty --"
 msgstr "-- leer --"
 
@@ -75,6 +75,6 @@ msgstr ""
 msgid "http://lloc.de/"
 msgstr ""
 
-#: MslsMenu.php:224
+#: MslsMenu.php:220
 msgid "MslsMenu is inactive: it requires Multisite Language Switcher 3.0 or newer."
 msgstr "MslsMenu ist inaktiv: Es benötigt den Multisite Language Switcher 3.0 oder neuer."

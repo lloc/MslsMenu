@@ -82,10 +82,6 @@ final class MslsMenu {
 		return $obj;
 	}
 
-	private function get_msls_output(): lloc\Msls\Frontend\Output {
-		return msls_output();
-	}
-
 	/**
 	 * Callback for wp_nav_menu_items
 	 *
@@ -101,7 +97,7 @@ final class MslsMenu {
 		if ( is_array( $menu_locations ) && in_array( $theme_location, $menu_locations, true ) ) {
 			$menu = '';
 
-			$obj = $this->get_msls_output();
+			$obj = msls_output();
 			foreach ( $obj->get( (int) $this->options->mslsmenu_display, false, (bool) $this->options->only_with_translation ) as $item ) {
 				$menu .= $this->options->mslsmenu_before_item . $item . $this->options->mslsmenu_after_item;
 			}
