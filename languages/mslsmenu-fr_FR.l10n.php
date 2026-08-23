@@ -3,8 +3,8 @@ return array(
 	'domain'             => null,
 	'plural-forms'       => 'nplurals=2; plural=(n != 1);',
 	'language'           => 'French (fr_FR)',
-	'project-id-version' => 'MslsMenu 1.0',
-	'pot-creation-date'  => '2015-05-04 17:07+0100',
+	'project-id-version' => 'MslsMenu 3.0.2',
+	'pot-creation-date'  => '2026-08-23T08:54:39+00:00',
 	'po-revision-date'   => '2015-05-04 17:07+0100',
 	'x-generator'        => 'Poedit 1.5.4',
 	'messages'           => array(

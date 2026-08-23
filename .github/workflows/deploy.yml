@@ -40,6 +40,11 @@ jobs:
             test ! -e "$BUILD_DIR/$forbidden" || { echo "::error::$BUILD_DIR/$forbidden must not be shipped"; exit 1; }
           done
           echo "Build directory holds $(find "$BUILD_DIR" -type f | wc -l) files."
+          # composer build also leaves a mslsmenu.zip here. The deploy action below runs
+          # "zip -r" on that very path, which merges into an existing archive instead of
+          # replacing it - the attestation would then compare a zip that still carries
+          # entries from the local build. Drop it so the action starts from scratch.
+          rm -f "$BUILD_DIR.zip"
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
         id: deploy
@@ -56,4 +61,6 @@ jobs:
       - name: Attest build provenance
         uses: johnbillion/action-wordpress-plugin-attestation@0.7.3
         with:
+          # Defaults to the repository name ("MslsMenu"); the wp.org slug is lowercase.
+          plugin: mslsmenu
           zip-path: ${{ steps.deploy.outputs.zip-path }}

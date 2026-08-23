@@ -18,4 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __DIR__ ) . '/' );
 }
 
-require_once dirname( __DIR__ ) . '/vendor/lloc/multisite-language-switcher/includes/aliases.php';
+$msls = dirname( __DIR__ ) . '/vendor/lloc/multisite-language-switcher/includes/aliases.php';
+
+// "composer build" runs "composer update --no-dev", which removes MSLS from vendor/.
+// Fail with an instruction instead of a "Failed opening required" fatal.
+if ( ! file_exists( $msls ) ) {
+	throw new RuntimeException(
+		"Multisite Language Switcher is missing from vendor/. Run 'composer install' (a previous 'composer build' stripped the dev dependencies)."
+	);
+}
+
+require_once $msls;
