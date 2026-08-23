@@ -35,4 +35,6 @@
 ## Release Packaging Tips
 - Bump the plugin header version in `MslsMenu.php` and the `Stable tag` in `readme.txt` to the same value, and add the matching `= x.y.z =` entry to the `readme.txt` changelog. WordPress.org rejects the release if header and stable tag disagree.
 - Run `composer build` locally only to inspect the result. The shipped artifact is built in CI: `.github/workflows/deploy.yml` runs the same `composer build`, verifies the contents and deploys them through `BUILD_DIR: mslsmenu`.
-- Tag without a `v` prefix (`3.0.1`) and push the tag — that push is what triggers the deploy workflow.
+- Tag without a `v` prefix (`3.0.2`) and push the tag — that push is what triggers the deploy workflow.
+- **Never move a tag that has already been pushed.** WordPress.org refuses to overwrite an existing `tags/<version>` directory (`deploy.sh` logs "was already published" and skips the SVN write), so a re-pointed tag silently leaves the wrong code online. This is how 3.0.1 ended up shipping the 3.0.0 code. A botched release needs a new version number, not a corrected tag.
+- Tag the merge commit on `master`, never a branch head, and check that its `Version:` header is the one you intend to release.

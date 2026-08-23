@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: MslsMenu 3.0.1\n"
+"Project-Id-Version: MslsMenu 3.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/MslsMenu\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-22T14:39:19+00:00\n"
+"POT-Creation-Date: 2026-08-23T08:46:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mslsmenu\n"
@@ -40,41 +40,37 @@ msgid "http://lloc.de/"
 msgstr ""
 
 #: MslsMenu.php:121
-#: mslsmenu/MslsMenu.php:121
 msgid "Menu Settings"
 msgstr ""
 
-#: MslsMenu.php:134
-#: mslsmenu/MslsMenu.php:134
+#: MslsMenu.php:132
 msgid "Theme Location"
 msgstr ""
 
-#: MslsMenu.php:138
-#: mslsmenu/MslsMenu.php:138
+#: MslsMenu.php:136
 msgid "Display"
 msgstr ""
 
-#: MslsMenu.php:143
-#: mslsmenu/MslsMenu.php:143
+#: MslsMenu.php:141
 msgid "Text/HTML before the list"
 msgstr ""
 
-#: MslsMenu.php:144
-#: mslsmenu/MslsMenu.php:144
+#: MslsMenu.php:142
 msgid "Text/HTML after the list"
 msgstr ""
 
-#: MslsMenu.php:145
-#: mslsmenu/MslsMenu.php:145
+#: MslsMenu.php:143
 msgid "Text/HTML before each item"
 msgstr ""
 
-#: MslsMenu.php:146
-#: mslsmenu/MslsMenu.php:146
+#: MslsMenu.php:144
 msgid "Text/HTML after each item"
 msgstr ""
 
-#: MslsMenu.php:165
-#: mslsmenu/MslsMenu.php:165
+#: MslsMenu.php:163
 msgid "-- empty --"
+msgstr ""
+
+#: MslsMenu.php:224
+msgid "MslsMenu is inactive: it requires Multisite Language Switcher 3.0 or newer."
 msgstr ""

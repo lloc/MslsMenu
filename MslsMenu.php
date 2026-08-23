@@ -9,7 +9,7 @@
  *
  * Plugin Name: MslsMenu
  * Requires Plugins: multisite-language-switcher
- * Version: 3.0.1
+ * Version: 3.0.2
  * Plugin URI: https://wordpress.org/plugins/mslsmenu/
  * Description: Adds the Multisite Language Switcher to the primary-nav-menu
  * Author: Dennis Ploetner
@@ -206,6 +206,24 @@ final class MslsMenu {
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo ( new lloc\Msls\Component\Input\Text( $key, $value ) )->render();
 	}
+
+	/**
+	 * Callback for admin_notices, telling the administrator why MslsMenu does nothing.
+	 *
+	 * "Requires Plugins" cannot express a minimum version, so without this notice an
+	 * outdated Multisite Language Switcher would make the menu links disappear without
+	 * any explanation.
+	 */
+	public static function requirements_notice(): void {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+
+		printf(
+			'<div class="notice notice-warning"><p>%s</p></div>',
+			esc_html__( 'MslsMenu is inactive: it requires Multisite Language Switcher 3.0 or newer.', 'mslsmenu' )
+		);
+	}
 }
 
 // @codeCoverageIgnoreStart
@@ -213,10 +231,16 @@ if ( function_exists( 'add_action' ) ) {
 	add_action(
 		'plugins_loaded',
 		function () {
-			// The namespaced class only exists from MSLS 3.0 on. Against an older MSLS the
-			// null object keeps every hook unregistered instead of fataling on a missing type.
-			$options = class_exists( lloc\Msls\Options\Options::class ) ? msls_options() : null;
-			MslsMenu::init( $options );
+			// The namespaced class exists from MSLS 3.0 on, the api.php helpers only once the
+			// MSLS plugin file itself was loaded - being autoloadable is not enough. Both have
+			// to hold, otherwise the null object keeps every hook unregistered.
+			$ready = class_exists( lloc\Msls\Options\Options::class ) && function_exists( 'msls_options' );
+
+			if ( ! $ready ) {
+				add_action( 'admin_notices', array( MslsMenu::class, 'requirements_notice' ) );
+			}
+
+			MslsMenu::init( $ready ? msls_options() : null );
 		}
 	);
 }
