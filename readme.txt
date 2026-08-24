@@ -2,7 +2,7 @@
 
 Contributors: realloc
 Donate link: http://www.greenpeace.org/international/
-Tags: multilingual, multisite, language, switcher, menu
+Tags: menu, multilingual, multisite, msls, switcher
 Requires at least: 6.1
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -14,17 +14,33 @@ Adds the output of the Multisite Language Switcher to one (or more) of your navi
 
 == Description ==
 
-Most people are likely to use some lines of PHP or the widget provided by the [Multisite Language Switcher](http://wordpress.org/plugins/multisite-language-switcher/) to integrate the links to the translations in their blogs.
+The [Multisite Language Switcher](https://wordpress.org/plugins/multisite-language-switcher/) already offers plenty of ways to output its language links: a block, the shortcodes `[sc_msls]` and `[sc_msls_widget]`, the classic widget, a content filter, and the `msls_the_switcher()` API for your theme files.
 
-But this can lead to fatal errors if you don't know much about PHP, or maybe the dynamic sidebars are not the best place in your opinion. If you want to integrate the *Multisite Language Switcher* in one (or more) of your Navigation Menu(s) then you should give **MslsMenu** a try. 
+What none of them covers is a navigation menu. A classic menu rendered by `wp_nav_menu()` accepts menu items and nothing else, so there is no slot for a block or a shortcode inside it - and writing a custom walker into the theme is more work than most sites are willing to spend on a language switcher.
+
+**MslsMenu** closes that gap. Select the theme locations you want in the settings and the language links are appended to every menu rendered at those locations. No theme edit, no PHP, no custom walker.
 
 == Installation ==
 
 * Use the WordPress plugin installation and search for "MslsMenu".
-* Alternatively, download the plugin, uncompress it with your preferred unzip programme and upload the folder `msls-menu` to the `/wp-content/plugins/` directory.
+* Alternatively, download the plugin, uncompress it with your preferred unzip programme and upload the folder `mslsmenu` to the `/wp-content/plugins/` directory.
 * Activate the plugin
 * You will find the configuration of the plugin once in each blog in Settings -> Multisite Language Switcher
-* Set the menu specific options such as `<li class="mslsl-menu">` before the item-ouitput or the description. Please, check the Screenshots-section too!
+* Set the menu specific options such as `<li class="msls-menu">` before the item output or the description. Please, check the Screenshots-section too!
+
+== Frequently Asked Questions ==
+
+= Does this work with the Navigation block of a block theme? =
+
+No. MslsMenu hooks into `wp_nav_menu_items`, a filter of the classic `wp_nav_menu()` function, and the Navigation block does not run through it. In a block theme use the block of the Multisite Language Switcher instead and place it next to the Navigation block in your header template.
+
+= Do I need the Multisite Language Switcher? =
+
+Yes, version 3.0 or newer, installed and active. MslsMenu is an add-on and declares the dependency through its `Requires Plugins` header. That header cannot express a minimum version, so against an older Multisite Language Switcher MslsMenu stays inactive and explains itself with an admin notice.
+
+= Where are the settings? =
+
+In `Settings` -> `Multisite Language Switcher` of each site. MslsMenu adds its own "Menu Settings" section to that page.
 
 == Screenshots ==
 

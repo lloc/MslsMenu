@@ -3,7 +3,7 @@ MslsMenu
 
 [![codecov](https://codecov.io/gh/lloc/MslsMenu/graph/badge.svg?token=902NM9H2BW)](https://codecov.io/gh/lloc/MslsMenu)
 
-MslsMenu extends the Multisite Language Switcher by appending its language links to the navigation menus of your choice. Use it when you want the switcher inside a nav menu without editing your theme or writing a custom walker.
+MslsMenu extends the Multisite Language Switcher by appending its language links to the navigation menus of your choice. MSLS itself ships a block, the shortcodes `[sc_msls]` and `[sc_msls_widget]`, a widget, a content filter and the `msls_the_switcher()` API — but none of them fit into a nav menu, because a classic menu accepts menu items and nothing else. Use MslsMenu when you want the switcher inside a menu without editing your theme or writing a custom walker.
 
 Multisite Language Switcher **3.0 or newer** has to be installed and active first — MslsMenu is an add-on and declares that through its `Requires Plugins` header. That header carries no version constraint, so against an older MSLS the plugin stays inactive rather than raising an error.
 
@@ -14,6 +14,8 @@ Multisite Language Switcher **3.0 or newer** has to be installed and active firs
 
 ## Usage
 MslsMenu contributes no menu item, so there is nothing to place under Appearance → Menus. It hooks into `wp_nav_menu_items` and appends the switcher to whichever menus you point it at.
+
+That filter belongs to the classic `wp_nav_menu()`, so MslsMenu covers classic menus only — the Navigation block of a block theme never calls it. In a block theme, place the MSLS block next to the Navigation block in your header template instead.
 
 Open Settings → Multisite Language Switcher in the site you want to configure; MslsMenu adds its own “Menu Settings” section to that page.
 
