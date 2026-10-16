@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    target-branch: 'master'
+    groups:
+      github-actions:
+        patterns: ["*"]
+
+  - package-ecosystem: composer
+    directory: '/'
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    target-branch: 'master'
+    groups:
+      composer-minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
